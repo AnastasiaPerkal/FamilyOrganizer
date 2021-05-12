@@ -1,0 +1,138 @@
+﻿<UserControl x:Class="FamilyOrganizer.UserCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FamilyOrganizer"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="500" MaxHeight="250">
+    <Grid>
+        <Border BorderThickness="2" 
+                BorderBrush="#c7dfd5" 
+                CornerRadius="10"
+                Margin="20 0 20 15"
+                VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="{Binding Photo.Source}" Height="220" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5 2 0 2" />
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0 10 0 0">
+                        <Label Content="Username: "
+                               HorizontalContentAlignment="Right"
+                               FontFamily="helvetica"
+                               FontWeight="Light"
+                               FontSize="20"
+                               HorizontalAlignment="Center"
+                               Background="Transparent"
+                               BorderThickness="0"
+                               Width="100"
+                               VerticalAlignment="Top"
+                               Height="35"
+                               Margin="0 50 0 0"/>
+                        <Label Content="{Binding UserName}"
+                               FontFamily="helvetica"
+                               FontWeight="Light"
+                               FontSize="20"
+                               HorizontalAlignment="Center"
+                               Background="Transparent"
+                               BorderThickness="0"
+                               Width="134"
+                               HorizontalContentAlignment="Left"
+                               VerticalAlignment="Top"
+                               Height="35"
+                               Margin="0 50 0 0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Role: "
+                               HorizontalContentAlignment="Right"
+                               FontFamily="helvetica"
+                               FontWeight="Light"
+                               FontSize="20"
+                               HorizontalAlignment="Center"
+                               Background="Transparent"
+                               BorderThickness="0"
+                               Width="100"
+                               VerticalAlignment="Top"
+                               Height="35"/>
+                        <Label 
+                               Content="{Binding Role}"
+                               FontFamily="helvetica"
+                               FontWeight="Light"
+                               FontSize="20"
+                               HorizontalAlignment="Center"
+                               Background="Transparent"
+                               BorderThickness="0"
+                               Width="134"
+                               HorizontalContentAlignment="Left"
+                               VerticalAlignment="Top"
+                               Height="35"/>
+                        
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Balance: "
+                               HorizontalContentAlignment="Right"
+                               FontFamily="helvetica"
+                               FontWeight="Light"
+                               FontSize="20"
+                               HorizontalAlignment="Center"
+                               Background="Transparent"
+                               BorderThickness="0"
+                               Width="100"
+                               VerticalAlignment="Top"
+                               Height="35"/>
+                        <Label Content="{Binding Balance}"
+                               Name="Balance"                             
+                               FontFamily="helvetica"
+                               FontWeight="Light"
+                               FontSize="20"
+                               HorizontalAlignment="Center"
+                               Background="Transparent"
+                               BorderThickness="0"
+                               Width="134"
+                               HorizontalContentAlignment="Left"
+                               VerticalAlignment="Top"
+                               Height="35"/>
+
+                       
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Vertical"
+                            Margin="70 60 0 0">
+
+                    <Button x:Name="DeleteUser"
+                       
+                        Height="50"
+                        Width="50"
+                        BorderThickness="0"
+                        Style="{StaticResource ButtonStyle}"
+                        Click="DeleteUser_Click"
+                        MouseEnter="DeleteUser_MouseEnter"
+                        MouseLeave="DeleteUser_MouseLeave"
+                        Margin="0"
+                       >
+                        <Button.Background>
+                            <ImageBrush ImageSource="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\deleteUser.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="AddMoney"
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Height="50"
+                        Width="50"
+                        Margin="0 5 0 0"
+                        BorderThickness="0"
+                        Style="{StaticResource ButtonStyle}"
+                        MouseEnter="AddMoney_MouseEnter"
+                        MouseLeave="AddMoney_MouseLeave"
+                        Click="AddMoney_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\addMoney.png"/>
+                        </Button.Background>
+                    </Button>
+                </StackPanel>
+            
+            
+                </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

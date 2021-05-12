@@ -1,0 +1,177 @@
+[
+  {
+    "ToUserId": 2,
+    "Date": "2021-04-27",
+    "Sum": 123,
+    "Type" : "Education"
+  },
+  {
+    "ToUserId": 1,
+    "Date": "2021-04-24",
+    "Sum": 287,
+    "Type": "Education"
+  },
+  {
+    "ToUserId": 3,
+    "Date": "2021-05-04",
+    "Sum": 349,
+    "Type": "Food"
+  },
+  {
+    "ToUserId": 1,
+    "Date": "2021-05-01",
+    "Sum": 388,
+    "Type": "Education"
+  },
+  {
+    "ToUserId": 2,
+    "Date": "2021-04-23",
+    "Sum": 54,
+    "Type": "Food"
+  },
+  {
+    "ToUserId": 2,
+    "Date": "2021-04-29",
+    "Sum": 215,
+    "Type": "Food"
+  },
+  {
+    "ToUserId": 3,
+    "Date": "2021-05-03",
+    "Sum": 74,
+    "Type": "Education"
+  },
+  {
+    "ToUserId": 2,
+    "Date": "2021-04-22",
+    "Sum": 415,
+    "Type": "Food"
+  },
+  {
+    "ToUserId": 1,
+    "Date": "2021-04-26",
+    "Sum": 350,
+    "Type": "Food"
+  },
+  {
+    "ToUserId": 1,
+    "Date": "2021-04-29",
+    "Sum": 329,
+    "Type": "Education"
+  },
+  {
+    "ToUserId": 1,
+    "Date": "2021-04-26",
+    "Sum": 380,
+    "Type": "Food"
+  },
+  {
+    "ToUserId": 1,
+    "Date": "2021-04-24",
+    "Sum": 488,
+    "Type": "Food"
+  },
+  {
+    "ToUserId": 1,
+    "Date": "2021-05-06",
+    "Sum": 280,
+    "Type": "Education"
+  },
+  {
+    "ToUserId": 1,
+    "Date": "2021-04-26",
+    "Sum": 348,
+    "Type": "Food"
+  },
+  {
+    "ToUserId": 3,
+    "Date": "2021-04-22",
+    "Sum": 372,
+    "Type": "Entertainment"
+  },
+  {
+    "ToUserId": 1,
+    "Date": "2021-04-23",
+    "Sum": 492,
+    "Type": "Entertainment"
+  },
+  {
+    "ToUserId": 2,
+    "Date": "2021-05-05",
+    "Sum": 197,
+    "Type": "Education"
+  },
+  {
+    "ToUserId": 2,
+    "Date": "2021-04-26",
+    "Sum": 493,
+    "Type": "Entertainment"
+  },
+  {
+    "ToUserId": 2,
+    "Date": "2021-04-25",
+    "Sum": 448,
+    "Type": "Entertainment"
+  },
+  {
+    "ToUserId": 1,
+    "Date": "2021-04-30",
+    "Sum": 191
+  },
+  {
+    "ToUserId": 3,
+    "Date": "2021-05-06",
+    "Sum": 397,
+    "Type": "Entertainment"
+  },
+  {
+    "ToUserId": 1,
+    "Date": "2021-04-27",
+    "Sum": 52,
+    "Type": "Education"
+  },
+  {
+    "ToUserId": 2,
+    "Date": "2021-04-28",
+    "Sum": 64,
+    "Type": "Entertainment"
+  },
+  {
+    "ToUserId": 3,
+    "Date": "2021-05-03",
+    "Sum": 267,
+    "Type": "Entertainment"
+  },
+  {
+    "ToUserId": 1,
+    "Date": "2021-04-28",
+    "Sum": 371,
+    "Type": "Other"
+  },
+  {
+    "ToUserId": 1,
+    "Date": "2021-04-25",
+    "Sum": 200
+  },
+  {
+    "ToUserId": 2,
+    "Date": "2021-05-01",
+    "Sum": 116
+  },
+  {
+    "ToUserId": 1,
+    "Date": "2021-04-24",
+    "Sum": 476
+  },
+  {
+    "ToUserId": 1,
+    "Date": "2021-05-03",
+    "Sum": 74
+  },
+  {
+    "ToUserId": 2,
+    "Date": "2021-04-30",
+    "Sum": 494,
+    "Type": "Other"
+  }
+]

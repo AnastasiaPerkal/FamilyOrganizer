@@ -1,0 +1,160 @@
+﻿<UserControl x:Class="FamilyOrganizer.Edit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FamilyOrganizer"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="65"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="60"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+            <StackPanel Orientation="Horizontal"
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Grid.RowSpan="4" 
+                        VerticalAlignment="Top"
+                        Height="220"
+                        HorizontalAlignment="Center">
+            <Button x:Name="left"
+                    Height="50"
+                    Width="50"
+                    Style="{StaticResource ButtonStyle}"
+                    BorderThickness="0"
+                    Click="left_Click"
+                    MouseEnter="left_MouseEnter"
+                    MouseLeave="left_MouseLeave">
+                <Button.Background>
+                    <ImageBrush ImageSource="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\leftArrow.png"/>
+                </Button.Background>
+            </Button>
+                
+            <Image Source="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\userPhoto1.JPG" 
+                   x:Name="ProfileAvatar"
+                   Margin="0 0 0 0"/>
+
+            <Button x:Name="right"
+                    Height="50"
+                    Width="50"
+                    BorderThickness="0"
+                    Click="right_Click"
+                    MouseEnter="right_MouseEnter"
+                    MouseLeave="right_MouseLeave"
+                    Style="{StaticResource ButtonStyle}">
+                <Button.Background>
+                    <ImageBrush ImageSource="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\rightArrow.png"/>
+                </Button.Background>
+            </Button>
+        </StackPanel>
+      
+        <Label Content="Edit section"
+               Grid.Row="1"
+               Grid.Column="1"
+               FontFamily="helvetica"
+               FontWeight="Light"
+               FontSize="20"
+               HorizontalAlignment="Center"
+               Background="Transparent"
+               BorderThickness="0"
+               Width="134"
+               HorizontalContentAlignment="Center"
+               Height="35"/>
+        
+        <StackPanel Grid.Row="4" 
+                    Grid.Column="1"
+                    Margin="45 165 0 0">
+            <TextBlock Text="Change login"
+                       FontFamily="helvetica"
+                       FontWeight="Light"
+                       FontSize="20"
+                       HorizontalAlignment="Left"
+                       Margin="0 20 0 0"/>
+            
+            <StackPanel Orientation="Horizontal">
+                <Image Source="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\username.png" 
+                       Width="50" Height="50" Margin="0 0 0 0"/>
+
+                <TextBox x:Name="TextBoxCurrentUsername"
+                         FontFamily="helvetica"
+                         FontWeight="Light"
+                         Text="Current name"
+                         FontSize="20"
+                         HorizontalAlignment="Center"
+                         Background="Transparent"
+                         BorderThickness="0"
+                         Width="235"
+                         HorizontalContentAlignment="Left"
+                         Height="25"
+                         Margin="0 0 0 0"/>
+            </StackPanel>
+
+            <Border Width="500"
+                Height="1"
+                Background="Black"
+                HorizontalAlignment="Left"
+                Margin="54 -18 0 0"/>
+
+            <TextBlock Text="Change password"
+                       FontFamily="helvetica"
+                       FontWeight="Light"
+                       FontSize="20"
+                       HorizontalAlignment="Left"
+                       Margin="0 20 0 0"/>
+
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="2">
+                <Image Source="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\password.png" 
+                       Width="50" Height="50"/>
+
+                <PasswordBox x:Name="TextBoxPassword"
+                     FontFamily="helvetica"
+                     FontWeight="Light"
+                     Password="Password"
+                     GotFocus="TextBoxPassword_GotFocus"
+                     LostFocus="TextBoxPassword_LostFocus"
+                     FontSize="20"
+                     HorizontalAlignment="Center"
+                     Background="Transparent"
+                     BorderThickness="0"
+                     Width="235"
+                     HorizontalContentAlignment="Left"
+                     Height="25"/>
+            </StackPanel>
+
+            <Border Width="500"
+                Height="1"
+                Background="Black"
+                HorizontalAlignment="Left"
+                Margin="54 -18 0 0"/>
+        </StackPanel>
+        
+        <Button x:Name="saveLogin"
+                Grid.Column="2"
+                Grid.Row="3"
+                Height="50"
+                Width="50"
+                BorderThickness="0"
+                Style="{StaticResource ButtonStyle}"
+                Click="saveLogin_Click"
+                MouseEnter="saveLogin_MouseEnter"
+                MouseLeave="saveLogin_MouseLeave"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Margin="0 50 10 10">
+            <Button.Background>
+                <ImageBrush ImageSource="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\save.png"/>
+            </Button.Background>
+        </Button>
+    </Grid>
+</UserControl>

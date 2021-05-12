@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="FamilyOrganizer.Family"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FamilyOrganizer"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="65"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="60"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Label Content="Family section"
+               Grid.Row="1"
+               Grid.Column="1"
+               FontFamily="helvetica"
+               FontWeight="Light"
+               FontSize="20"
+               HorizontalAlignment="Center"
+               Background="Transparent"
+               BorderThickness="0"
+               Width="134"
+               HorizontalContentAlignment="Center"
+               Height="35"/>
+        
+        <Button x:Name="UpdateTransaction"
+                Grid.Column="1"
+                Grid.Row="1"
+                VerticalAlignment="Top"
+                Height="50"
+                Width="50"
+                Margin="20 1 0 0"
+                HorizontalAlignment="Left"
+                BorderThickness="0"
+                Style="{StaticResource ButtonStyle}"
+                Click="UpdateTransaction_Click"
+                MouseEnter="UpdateTransaction_MouseEnter"
+                MouseLeave="UpdateTransaction_MouseLeave">
+            <Button.Background>
+                <ImageBrush ImageSource="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\update.png"/>
+            </Button.Background>
+        </Button>
+
+        <Button x:Name="AddUser"
+                Grid.Column="1"
+                Grid.Row="1"
+                HorizontalAlignment="Left"
+                Height="50"
+                Width="50"
+                BorderThickness="0"
+                VerticalAlignment="Top"
+                Margin="70 0 0 0"
+                Click="LogoutBtn_Click"
+                MouseEnter="AddUser_MouseEnter"
+                MouseLeave="AddUser_MouseLeave"
+                Style="{StaticResource ButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\plus.png"/>
+            </Button.Background>
+        </Button>
+        
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="1" Grid.RowSpan="2" Grid.Row="2" Margin="0 0 0 0">
+            <ItemsControl Name="usersList" x:FieldModifier="public">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                
+                <ItemsControl.ItemTemplate>
+                    <HierarchicalDataTemplate>
+                        <local:UserCard VerticalAlignment="Top" ></local:UserCard>
+                    </HierarchicalDataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+    </Grid>
+</UserControl>

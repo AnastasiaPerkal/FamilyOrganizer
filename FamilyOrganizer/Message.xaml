@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="FamilyOrganizer.Message"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FamilyOrganizer"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="300" MaxHeight="250">
+    <Grid>
+       
+        <Border BorderThickness="1" 
+                BorderBrush="Black" 
+                Background="White"
+                CornerRadius="10"
+                Margin="20 20 0 0"
+                VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="{Binding User.Photo.Source}" 
+                       Height="100" HorizontalAlignment="Left" 
+                       VerticalAlignment="Top" Margin="5 2 0 2" />
+                
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0 15 0 0">
+                        <Label Content="{Binding User.UserName}"
+                               FontFamily="helvetica"
+                               FontWeight="Light"
+                               FontSize="20"
+                               HorizontalAlignment="Center"
+                               Background="Transparent"
+                               BorderThickness="0"
+                               HorizontalContentAlignment="Right"
+                               VerticalAlignment="Top"
+                               Height="35"
+                               Margin="0 0 0 0"/>
+                    </StackPanel>
+
+                    <Label Content="{Binding Content}"
+                           FontFamily="helvetica"
+                           FontWeight="Light"
+                           FontSize="20"
+                           HorizontalAlignment="Left"
+                           Background="Transparent"
+                           BorderThickness="0"
+                           HorizontalContentAlignment="Right"
+                           VerticalAlignment="Top"
+                           Height="35"
+                           Margin="0 0 0 0"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Label Content="{Binding PublishedOn}"
+               FontFamily="helvetica"
+               FontWeight="Light"
+               FontSize="16"
+               Background="Transparent"
+               BorderThickness="0"
+               HorizontalAlignment="Right"
+               HorizontalContentAlignment="Right"
+               VerticalAlignment="Top"
+               Width="170"
+               Height="35"
+               Margin="0 20 0 0"/>
+    </Grid>
+</UserControl>
