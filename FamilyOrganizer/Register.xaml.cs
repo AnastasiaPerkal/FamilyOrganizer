@@ -50,7 +50,6 @@ namespace FamilyOrganizer
             {
                 var mb = new FamilyOrganizerMessageBox("Username is required");
                 mb.Show();
-                //MessageBox.Show("Username is required");
                 return;
             }
 
@@ -58,7 +57,6 @@ namespace FamilyOrganizer
             {
                 var mb = new FamilyOrganizerMessageBox("Password is required");
                 mb.Show();
-                //MessageBox.Show("Password is required");
                 return;
             }
 
@@ -66,7 +64,6 @@ namespace FamilyOrganizer
             {
                 var mb = new FamilyOrganizerMessageBox("The username is taken");
                 mb.Show();
-                //MessageBox.Show("The username is taken");
                 return;
             }
 

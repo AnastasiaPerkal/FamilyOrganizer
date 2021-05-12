@@ -41,7 +41,6 @@ namespace FamilyOrganizer
             {
                 var mb = new FamilyOrganizerMessageBox("Enter both login and password");
                 mb.Show();
-                //MessageBox.Show("why r u gay?");
                 return;
             }
 
@@ -53,7 +52,6 @@ namespace FamilyOrganizer
             {
                 var mb = new FamilyOrganizerMessageBox("Check username and password");
                 mb.Show();
-               // MessageBox.Show("u r gay.");
                 return;
             }
 
@@ -69,7 +67,6 @@ namespace FamilyOrganizer
             {
                 var mb = new FamilyOrganizerMessageBox("Check username and password");
                 mb.Show();
-               // MessageBox.Show("u r gay.");
                 return;
             }
             
