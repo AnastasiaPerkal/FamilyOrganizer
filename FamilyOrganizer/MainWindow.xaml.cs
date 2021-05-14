@@ -213,12 +213,12 @@ namespace FamilyOrganizer
                 case 5:
                     Back1.Children.Clear();
                     Back1.Children.Add(new ShoppingList(_context, _currentUser));
-                    NavigationPnl.Background = (Brush)bc.ConvertFrom("#f0ccfc");
+                    NavigationPnl.Background = (Brush)bc.ConvertFrom("#d1c9c9");
                     break;
                 case 6:
                     Back1.Children.Clear();
-                    Back1.Children.Add(new Diary());
-                    NavigationPnl.Background = (Brush)bc.ConvertFrom("#fcd8cc");
+                    Back1.Children.Add(new Diary(_context, _currentUser));
+                    NavigationPnl.Background = (Brush)bc.ConvertFrom("#e8caca");
                     break;
                 default:
                     break;

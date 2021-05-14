@@ -33,6 +33,7 @@ namespace FamilyOrganizer
             Context.Balances.Load();
             Context.Comments.Load();
             Context.ShoppingPlans.Load();
+            Context.TodayPlans.Load();
 
             //Seed.SeedTransactions(Context);
             //Seed.SeedBalances(Context);

@@ -83,7 +83,7 @@
                         MouseLeave="CloseBtn_MouseLeave"
                         Margin="0">
                 <Button.Background>
-                    <ImageBrush ImageSource="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\quit.png"/>
+                    <ImageBrush ImageSource=".\Resources\quit.png"/>
                 </Button.Background>
             </Button>
             <Button x:Name="AddBtn"
@@ -99,7 +99,7 @@
                         Margin="0 7 0 0"
                         VerticalAlignment="Top">
                 <Button.Background>
-                    <ImageBrush ImageSource="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\checked.png"/>
+                    <ImageBrush ImageSource=".\Resources\checked.png"/>
                 </Button.Background>
             </Button>
         </Grid>

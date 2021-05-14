@@ -5,10 +5,67 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FamilyOrganizer"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="555" d:DesignWidth="700">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type TextBox}" x:Key="TextBoxStyleGeneral">
+            <Setter Property="Template">
+
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                        <Border BorderBrush="#e8caca" CornerRadius="5" x:Name="border" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" TargetName="border" Value="1"/>
+
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#e8caca"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#e8caca"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <ImageBrush x:Key="ToggleBtnMouseOver"
+                    ImageSource=".\Resources\checked.png"/>
+
+        <Style x:Key="ToggleBtnStyle" TargetType="{x:Type ToggleButton}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border x:Name="border"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                SnapsToDevicePixels="True">
+                        </Border>
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Background"
+                                        TargetName="border"
+                                        Value="{StaticResource ToggleBtnMouseOver}"/>
+                                <Setter Property="BorderBrush"
+                                        TargetName="border"
+                                        Value="{StaticResource ToggleBtnMouseOver}"/>
+
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="65"/>
+            <ColumnDefinition Width="1.35*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="60"/>
         </Grid.ColumnDefinitions>
@@ -18,16 +75,208 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal"
+                    Grid.Column="1" 
+                    Grid.Row="2"
+                    Grid.ColumnSpan="3">
+            <TextBox  x:Name="TasksInput"
+                      FontFamily="helvetica"
+                      Height="34" 
+                      BorderThickness="2"
+                      Width="250"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Left"
+                      Margin="20,8,0,7.6"
+                      Style="{StaticResource TextBoxStyleGeneral}"
+                      VerticalContentAlignment="Center"
+                      FontWeight="Light"
+                      FontSize="20">
+            </TextBox>
+            <Button x:Name="addTask"
+                    Height="50"
+                    Width="50"
+                    BorderThickness="0"
+                    Style="{StaticResource ButtonStyle}"
+                    Click="addTask_Click"
+                    MouseEnter="addTask_MouseEnter"
+                    MouseLeave="addTask_MouseLeave"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top">
+                <Button.Background>
+                    <ImageBrush ImageSource=".\Resources\checked.png"/>
+                </Button.Background>
+            </Button>
+            <TextBox  x:Name="TasksSuggestionsInput"
+                      FontFamily="helvetica"
+                      Height="34" 
+                      BorderThickness="2"
+                      Width="200"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Left"
+                      Margin="10 0 0 -0.5"
+                      Style="{StaticResource TextBoxStyleGeneral}"
+                      VerticalContentAlignment="Center"
+                      FontWeight="Light"
+                      FontSize="20">
+            </TextBox>
+            <Button x:Name="addTaskSuggestion"
+                    Height="50"
+                    Width="50"
+                    BorderThickness="0"
+                    Style="{StaticResource ButtonStyle}"
+                    Click="addTaskSuggestion_Click"
+                    MouseEnter="addTaskSuggestion_MouseEnter"
+                    MouseLeave="addTaskSuggestion_MouseLeave"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top">
+                <Button.Background>
+                    <ImageBrush ImageSource=".\Resources\checked.png"/>
+                </Button.Background>
+            </Button>
+        </StackPanel>
+
+        <Border Grid.Row="3" 
+                Grid.Column="1" 
+                Background="#e8caca"
+                Margin="20 8 20 20"
+                CornerRadius="10">
+            <ScrollViewer Style ="{StaticResource FavsScrollViewer}" 
+                          VerticalScrollBarVisibility="Visible" 
+                          Name="Comments" Margin="0 0 0 0"
+                          Grid.Column="2"
+                          Grid.Row="3">
+                <ItemsControl Name="TasksList" 
+                              x:FieldModifier="public" 
+                              Margin="0 0 20 20">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+
+                    <ItemsControl.ItemTemplate>
+                        <HierarchicalDataTemplate>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="50">
+                                <Button x:Name="deleteItem1"
+                                        Height="50"
+                                        Width="50"
+                                        BorderThickness="0"
+                                        Style="{StaticResource ButtonStyle}"
+                                        Click="deleteItem1_Click"
+                                        MouseEnter="deleteItem1_MouseEnter"
+                                        MouseLeave="deleteItem1_MouseLeave"
+                                        HorizontalAlignment="Right">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource=".\Resources\deleteUser.png"/>
+                                    </Button.Background>
+                                </Button>
+
+                                <Label Content="{Binding Task}"
+                                       FontFamily="helvetica"
+                                       FontWeight="Light"
+                                       Foreground="Black"
+                                       FontSize="20"
+                                       VerticalContentAlignment="Center"/>
+
+                            </StackPanel>
+
+                        </HierarchicalDataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                </ItemsControl>
+            </ScrollViewer>
+        </Border>
+
         <Label Content="Diary section"
                Grid.Row="1"
+               Grid.ColumnSpan="2"
                Grid.Column="1"
                FontFamily="helvetica"
-                     FontWeight="Light"
-                     FontSize="20"
-                     HorizontalAlignment="Center"
-                     Background="Transparent"
-                     BorderThickness="0"
-                     HorizontalContentAlignment="Center"
-                     Height="35"/>
+               FontWeight="Light"
+               FontSize="20"
+               HorizontalAlignment="Center"
+               Background="Transparent"
+               BorderThickness="0"
+               HorizontalContentAlignment="Center"
+               Height="35"/>
+
+        <ScrollViewer Style ="{StaticResource FavsScrollViewer}" 
+                      VerticalScrollBarVisibility="Visible" 
+                      Name="Comments1" Margin="0 0 0 0"
+                      Grid.Column="2"
+                      Grid.ColumnSpan="2"
+                      Grid.Row="3">
+
+            <ItemsControl 
+                Name="TaskListRoutine" 
+                x:FieldModifier="public" Height="403">
+
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <HierarchicalDataTemplate>
+                        <StackPanel Orientation="Horizontal" Height="50" VerticalAlignment="Top" Margin="0 5 0 0" >
+
+                            <StackPanel Orientation="Horizontal" Width="90">
+
+                                <Button x:Name="approveItem"
+                                        Height="50"
+                                        Width="50"
+                                        BorderThickness="0"
+                                        Style="{StaticResource ButtonStyle}"
+                                        Click="approveItem_Click"
+                                        MouseEnter="approveItem_MouseEnter"
+                                        MouseLeave="approveItem_MouseLeave"
+                                        HorizontalAlignment="Left"
+                                        Margin="-3 0 0 0">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource=".\Resources\checked.png"/>
+                                    </Button.Background>
+                                </Button>
+                                <Button x:Name="deleteItem"
+                                        Height="50"
+                                        Width="50"
+                                        BorderThickness="0"
+                                        Style="{StaticResource ButtonStyle}"
+                                        Click="deleteItem_Click"
+                                        MouseEnter="deleteItem_MouseEnter"
+                                        MouseLeave="deleteItem_MouseLeave"
+                                        HorizontalAlignment="Left"
+                                        Margin="-8 0 0 0">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource=".\Resources\deleteUser.png"/>
+                                    </Button.Background>
+                                </Button>
+                            </StackPanel>
+                            <Label Content="{Binding Task}"
+                                   FontFamily="helvetica"
+                                   FontWeight="Light"
+                                   FontSize="20"
+                                   VerticalContentAlignment="Center"/>
+                        </StackPanel>
+
+                    </HierarchicalDataTemplate>
+                </ItemsControl.ItemTemplate>
+
+            </ItemsControl>
+
+        </ScrollViewer>
+        <Label Content="Task suggestions"
+               Grid.Row="3"
+               Grid.Column="2"
+               FontFamily="helvetica"
+               FontWeight="Light"
+               FontSize="20"
+               Background="Transparent"
+               BorderThickness="0"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Center"
+               HorizontalContentAlignment="Center"
+               Margin="-10 0 0 0"/>
     </Grid>
 </UserControl>

@@ -83,14 +83,14 @@ namespace FamilyOrganizer
         {
             addItem.Width += 10;
             addItem.Height += 10;
-            addItem.Margin = new Thickness(105, -5, 0, 0);
+            addItem.Margin = new Thickness(130, -5, 0, 0);
         }
 
         private void addItem_MouseLeave(object sender, MouseEventArgs e)
         {
             addItem.Width -= 10;
             addItem.Height -= 10;
-            addItem.Margin = new Thickness(100, 0, 0, 0);
+            addItem.Margin = new Thickness(135, 0, 0, 0);
         }
 
         private void approveItem_Click(object sender, RoutedEventArgs e)

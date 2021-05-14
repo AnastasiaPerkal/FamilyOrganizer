@@ -47,7 +47,7 @@
                 MouseEnter="UpdateTransaction_MouseEnter"
                 MouseLeave="UpdateTransaction_MouseLeave">
             <Button.Background>
-                <ImageBrush ImageSource="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\update.png"/>
+                <ImageBrush ImageSource=".\Resources\update.png"/>
             </Button.Background>
         </Button>
 
@@ -65,7 +65,7 @@
                 MouseLeave="AddUser_MouseLeave"
                 Style="{StaticResource ButtonStyle}">
             <Button.Background>
-                <ImageBrush ImageSource="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\plus.png"/>
+                <ImageBrush ImageSource=".\Resources\plus.png"/>
             </Button.Background>
         </Button>
         

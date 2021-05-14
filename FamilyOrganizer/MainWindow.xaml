@@ -15,9 +15,9 @@
         <SolidColorBrush x:Key="BackgroundSelectedBrush" Color="Black" Opacity="0.1"/>
         <!--toggle button style-->
         <ImageBrush x:Key="ToggleBtnMouseOver"
-                    ImageSource="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\menu1.png"/>
+                    ImageSource=".\Resources\menu1.png"/>
         <ImageBrush x:Key="ToggleBtnIsChecked"
-                    ImageSource="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\menu1.png"/>
+                    ImageSource=".\Resources\menu1.png"/>
         <Style x:Key="ToggleBtnStyle" TargetType="{x:Type ToggleButton}">
             <Setter Property="Template">
                 <Setter.Value>
@@ -54,7 +54,9 @@
         <!--text font style-->
         <Style x:Key="FontStyle" TargetType="TextBlock">
             <Setter Property="FontFamily"
-                    Value="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Fonts\Roboto-Light.ttf #Roboto"/>
+                    Value="helvetica"/>
+            <Setter Property="FontWeight"
+                    Value="Light"/>
             <Setter Property="VerticalAlignment"
                     Value="Center"/>
             <Setter Property="HorizontalAlignment"
@@ -63,6 +65,8 @@
                     Value="White"/>
             <Setter Property="FontSize"
                     Value="20"/>
+            <Setter Property="Margin"
+                     Value="0 10 0 0"/>
         </Style>
     </Window.Resources>
     <Grid>
@@ -100,7 +104,7 @@
                         Margin="0"
                        >
                     <Button.Background>
-                        <ImageBrush ImageSource="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\quit.png"/>
+                        <ImageBrush ImageSource=".\Resources\quit.png"/>
                     </Button.Background>
                 </Button>
                 <Button x:Name="LogoutBtn"
@@ -114,7 +118,7 @@
                         MouseLeave="LogoutBtn_MouseLeave"
                         Click="LogoutBtn_Click">
                     <Button.Background>
-                        <ImageBrush ImageSource="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\logOut.png"/>
+                        <ImageBrush ImageSource=".\Resources\logOut.png"/>
                     </Button.Background>
                 </Button>
             </Grid>
@@ -136,14 +140,6 @@
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Style="{StaticResource FontStyle}">
-                            <!--shadow effect-->
-                            <TextBlock.Effect>
-                                <DropShadowEffect BlurRadius="10"
-                                                  ShadowDepth="1"
-                                                  Direction="-90"
-                                                  Color="White"/>
-                            </TextBlock.Effect>
-
                         </TextBlock>
                         <ToggleButton x:Name="ToggleBtn"
                                       Grid.Column="0"
@@ -157,7 +153,7 @@
                                       Unchecked="ToggleBtn_Unchecked" 
                                       Checked="ToggleBtn_Checked">
                             <ToggleButton.Background>
-                                <ImageBrush ImageSource="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\menu.png" 
+                                <ImageBrush ImageSource=".\Resources\menu.png" 
                                             Stretch="Fill"/>
                             </ToggleButton.Background>
 
@@ -169,7 +165,7 @@
                                             <DoubleAnimation Storyboard.TargetName="NavigationPnl"
                                                              Storyboard.TargetProperty="Width"
                                                              BeginTime="0:0:0"
-                                                             From="230" To="65"
+                                                             From="200" To="65"
                                                              Duration="0:0:0.2">
                                             </DoubleAnimation>
                                         </Storyboard>
@@ -181,7 +177,7 @@
                                             <DoubleAnimation Storyboard.TargetName="NavigationPnl"
                                                              Storyboard.TargetProperty="Width"
                                                              BeginTime="0:0:0"
-                                                             From="65" To="230"
+                                                             From="65" To="200"
                                                              Duration="0:0:0.3">
                                             </DoubleAnimation>
                                         </Storyboard>
@@ -205,7 +201,7 @@
                             <StackPanel Orientation="Horizontal"
                                         Width="230" >
 
-                                <Image Source="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\general.png"
+                                <Image Source=".\Resources\general.png"
                                        Name="generalImage" 
                                        Stretch="Fill"
                                        Width="53" Height="55" />
@@ -222,7 +218,7 @@
                                       MouseLeave="profileImage_MouseLeave">
                             <StackPanel Orientation="Horizontal"
                                         Width="230">
-                                <Image Source="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\edit.png"
+                                <Image Source=".\Resources\edit.png"
                                        Stretch="Fill"
                                        Name="profileImage"
                                        Width="55" Height="55"/>
@@ -239,7 +235,7 @@
                                       MouseEnter="familyImage_MouseEnter"   MouseLeave="familyImage_MouseLeave">
                             <StackPanel Orientation="Horizontal"
                                         Width="230">
-                                <Image Source="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\family.png"
+                                <Image Source=".\Resources\family.png"
                                        Stretch="Fill"
                                        Name="familyImage"
                                        Margin="-4 0 0 0" Width="60" Height="50"/>
@@ -258,7 +254,7 @@
                                       MouseLeave="statisticsImage_MouseLeave">
                             <StackPanel Orientation="Horizontal"
                                         Width="230">
-                                <Image Source="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\statistics.png"
+                                <Image Source=".\Resources\statistics.png"
                                        Stretch="Fill"
                                        Name="statisticsImage"
                                        Width="55" Height="55"/>
@@ -274,7 +270,7 @@
                                       MouseEnter="expencesImage_MouseEnter" MouseLeave="expencesImage_MouseLeave">
                             <StackPanel Orientation="Horizontal"
                                         Width="230">
-                                <Image Source="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\money.png"
+                                <Image Source=".\Resources\money.png"
                                        Stretch="Fill"
                                        Name="expencesImage"
                                        Width="55" Height="55"/>
@@ -290,7 +286,7 @@
                                       MouseEnter="listImage_MouseEnter" MouseLeave="listImage_MouseLeave">
                             <StackPanel Orientation="Horizontal"
                                         Width="230">
-                                <Image Source="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\list.png"
+                                <Image Source=".\Resources\list.png"
                                        Stretch="Fill"
                                        Name="listImage"
                                        Width="55" Height="53"/>
@@ -309,7 +305,7 @@
                                    >
                             <StackPanel Orientation="Horizontal"
                                         Width="230">
-                                <Image Source="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\diary.png"
+                                <Image Source=".\Resources\diary.png"
                                        Stretch="Fill"
                                        Name="diaryImage"
                                        Width="55" Height="55"/>

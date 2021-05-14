@@ -117,12 +117,12 @@ namespace FamilyOrganizer
             checkBox.BeginInit();
             if (Checked)
             {
-                checkBox.UriSource = new Uri(@"C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\unchecked.png", UriKind.Absolute);
+                checkBox.UriSource = new Uri(@".\Resources\unchecked.png", UriKind.Relative);
                 Checked = false;
             }
             else
             {
-                checkBox.UriSource = new Uri(@"C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\checked.png", UriKind.Absolute);
+                checkBox.UriSource = new Uri(@".\Resources\checked.png", UriKind.Relative);
                 Checked = true;
             }
             checkBox.EndInit();

@@ -41,7 +41,7 @@
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top">
             <Button.Background>
-                <ImageBrush ImageSource="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\quit.png"/>
+                <ImageBrush ImageSource=".\Resources\quit.png"/>
             </Button.Background>
         </Button>
         <Label x:Name="MessageBoxLabel"

@@ -18,5 +18,6 @@ namespace FamilyOrganizer.User
         public int PhotoId { get; set; } = 1;
         public ICollection<Transaction> IncomingTransactions { get; set; }
         public ICollection<Comment> UserComments { get; set; }
+        public ICollection<TodayPlan> UserPlans { get; set; }
     }
 }

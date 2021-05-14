@@ -32,12 +32,12 @@
                 MouseLeave="Close_MouseLeave"
                 Click="Close_Click">
             <Button.Background>
-                <ImageBrush ImageSource="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\quit.png"/>
+                <ImageBrush ImageSource=".\Resources\quit.png"/>
             </Button.Background>
         </Button>
 
         <StackPanel VerticalAlignment="Center">
-            <Image Source="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\MainIcon4.png" Width="100" Height="100"/>
+            <Image Source=".\Resources\MainIcon4.png" Width="100" Height="100"/>
             <TextBlock Text="Modern Design"
                        FontWeight="Light"
                        FontFamily="helvetica"
@@ -47,7 +47,7 @@
 
         <StackPanel Grid.Row="1" >
             <StackPanel Orientation="Horizontal">
-                <Image Source="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\username.png"
+                <Image Source=".\Resources\username.png"
                        Width="50" Height="50" Margin="25 25 0 0"/>
                 <TextBox x:Name="UsernameRegister"
                          FontFamily="helvetica"
@@ -68,7 +68,7 @@
                     Margin="0 -17 0 0"
                     HorizontalAlignment="Center"/>
             <StackPanel Orientation="Horizontal" >
-                <Image Source="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\password.png" 
+                <Image Source=".\Resources\password.png" 
                        Width="50" Height="50"  Margin="25 25 0 0"/>
                 <PasswordBox x:Name="PasswordRegister"
                              FontFamily="helvetica"
@@ -95,7 +95,7 @@
                         MouseEnter="LB_MouseEnter"
                         MouseLeave="LB_MouseLeave">
                     <Button.Background>
-                        <ImageBrush ImageSource="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\loginOrRegister.png"/>
+                        <ImageBrush ImageSource=".\Resources\loginOrRegister.png"/>
                     </Button.Background>
                 </Button>
 
@@ -127,7 +127,7 @@
                         HorizontalAlignment="Left"
                         Click="IsParent_Click">
                     <Button.Background>
-                        <ImageBrush ImageSource="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\unchecked.png"/>
+                        <ImageBrush ImageSource=".\Resources\unchecked.png"/>
                     </Button.Background>
                 </Button>
                

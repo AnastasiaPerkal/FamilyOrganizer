@@ -14,6 +14,7 @@ namespace FamilyOrganizer.User
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Balance> Balances { get; set; }
         public DbSet<ShoppingPlan> ShoppingPlans { get; set; }
+        public DbSet<TodayPlan> TodayPlans { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
 
@@ -44,6 +45,11 @@ namespace FamilyOrganizer.User
 
             builder.Entity<AppUser>()
                 .HasMany(u => u.UserComments)
+                .WithRequired(c => c.User)
+                .WillCascadeOnDelete(true); 
+
+            builder.Entity<AppUser>()
+                .HasMany(u => u.UserPlans)
                 .WithRequired(c => c.User)
                 .WillCascadeOnDelete(true);
         }

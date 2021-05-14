@@ -159,7 +159,7 @@
     <Compile Include="DB\Balance.cs" />
     <Compile Include="DB\Seed\Seed.cs" />
     <Compile Include="DB\Transactions.cs" />
-    <Compile Include="DB\Diary.cs" />
+    <Compile Include="DB\TodayPlan.cs" />
     <Compile Include="DB\Comment.cs" />
     <Compile Include="DB\Photo.cs" />
     <Compile Include="DB\ShoppingPlan.cs" />
@@ -306,7 +306,54 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Fonts\" />
-    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\addMoney.png" />
+    <Resource Include="Resources\checked.png" />
+    <Resource Include="Resources\deleteUser.png" />
+    <Resource Include="Resources\diary.png" />
+    <Resource Include="Resources\diary1.png" />
+    <Resource Include="Resources\edit.png" />
+    <Resource Include="Resources\edit1.png" />
+    <Resource Include="Resources\family.png" />
+    <Resource Include="Resources\family1.png" />
+    <Resource Include="Resources\general1.png" />
+    <Resource Include="Resources\leftArrow.png" />
+    <Resource Include="Resources\list.png" />
+    <Resource Include="Resources\list1.png" />
+    <Resource Include="Resources\loginOrRegister.png" />
+    <Resource Include="Resources\logOut.png" />
+    <Resource Include="Resources\MainIcon4.png" />
+    <Resource Include="Resources\menu.png" />
+    <Resource Include="Resources\menu1.png" />
+    <Resource Include="Resources\money.png" />
+    <Resource Include="Resources\money1.png" />
+    <Resource Include="Resources\password.png" />
+    <Resource Include="Resources\plus.png" />
+    <Resource Include="Resources\quit.png" />
+    <Resource Include="Resources\rightArrow.png" />
+    <Resource Include="Resources\save.png" />
+    <Resource Include="Resources\send.png" />
+    <Resource Include="Resources\statistics.png" />
+    <Resource Include="Resources\statistics1.png" />
+    <Resource Include="Resources\unchecked.png" />
+    <Resource Include="Resources\update.png" />
+    <Resource Include="Resources\username.png" />
+    <Resource Include="Resources\userPhoto1.jpg" />
+    <Resource Include="Resources\userPhoto10.jpg" />
+    <Resource Include="Resources\userPhoto11.jpg" />
+    <Resource Include="Resources\userPhoto12.jpg" />
+    <Resource Include="Resources\userPhoto2.jpg" />
+    <Resource Include="Resources\userPhoto3.jpg" />
+    <Resource Include="Resources\userPhoto4.jpg" />
+    <Resource Include="Resources\userPhoto5.jpg" />
+    <Resource Include="Resources\userPhoto6.jpg" />
+    <Resource Include="Resources\userPhoto7.jpg" />
+    <Resource Include="Resources\userPhoto8.jpg" />
+    <Resource Include="Resources\userPhoto9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\general.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

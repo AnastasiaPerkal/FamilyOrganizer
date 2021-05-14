@@ -111,7 +111,7 @@
                         Margin="0"
                        >
                         <Button.Background>
-                            <ImageBrush ImageSource="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\deleteUser.png"/>
+                            <ImageBrush ImageSource=".\Resources\deleteUser.png"/>
                         </Button.Background>
                     </Button>
                     <Button x:Name="AddMoney"
@@ -126,7 +126,7 @@
                         MouseLeave="AddMoney_MouseLeave"
                         Click="AddMoney_Click">
                         <Button.Background>
-                            <ImageBrush ImageSource="C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\Resources\addMoney.png"/>
+                            <ImageBrush ImageSource=".\Resources\addMoney.png"/>
                         </Button.Background>
                     </Button>
                 </StackPanel>

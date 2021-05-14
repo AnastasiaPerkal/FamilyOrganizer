@@ -40,7 +40,7 @@ namespace FamilyOrganizer
 
             BitmapImage icon = new BitmapImage();
             icon.BeginInit();
-            icon.UriSource = new Uri(_currentUser.Photo.Source, UriKind.Absolute);
+            icon.UriSource = new Uri(_currentUser.Photo.Source, UriKind.Relative);
             icon.EndInit();
             ProfileAvatar.Source = icon;
 
@@ -70,7 +70,7 @@ namespace FamilyOrganizer
             var photo = _context.Photos.FirstOrDefault(p => p.Id == PhotoId);
             BitmapImage icon = new BitmapImage();
             icon.BeginInit();
-            icon.UriSource = new Uri(photo.Source, UriKind.Absolute);
+            icon.UriSource = new Uri(photo.Source, UriKind.Relative);
             icon.EndInit();
             ProfileAvatar.Source = icon;
         }
