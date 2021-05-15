@@ -40,6 +40,10 @@ namespace FamilyOrganizer
             {
                 TransferItem.IsEnabled = false;
             }
+            if(_currentUser.Role == "Child")
+            {
+                DepositItem.IsEnabled = false;
+            }
         }
         public AddTransaction()
         {
@@ -180,6 +184,15 @@ namespace FamilyOrganizer
             AddBtn.Width -= 10;
             AddBtn.Height -= 10;
             AddBtn.Margin = new Thickness(0, 65, 0, 0);
+        }
+
+        private void TranSum_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if ((sender as TextBox).Text.Length > 13)
+            {
+                (sender as TextBox).Text = (sender as TextBox).Text.Substring(0, 13);
+            }
+            (sender as TextBox).CaretIndex = 13;
         }
     }
 }

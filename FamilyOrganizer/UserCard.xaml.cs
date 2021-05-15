@@ -78,8 +78,11 @@ namespace FamilyOrganizer
                 _context = (a as Family)._context;
             }
 
-            
+            if (!_context.AppUsers.Any(u => u.Id == currentUser.Id))
+                return;
+
             _context.AppUsers.Remove(currentUser);
+
             var currentBalance = _context.AppUsers.Where(u => u.UserName != currentUser.UserName).Sum(u => u.Balance);
 
             var currentBalanceEntry = _context.Balances.OrderByDescending(b => b.Date).FirstOrDefault();
@@ -111,6 +114,9 @@ namespace FamilyOrganizer
 
                 _context = (a as Family)._context;
             }
+
+            if (!_context.AppUsers.Any(u => u.Id == currentUser.Id))
+                return;
 
             AddMoneyAdmin ama = new AddMoneyAdmin(_context, currentUser);
             ama.Show();

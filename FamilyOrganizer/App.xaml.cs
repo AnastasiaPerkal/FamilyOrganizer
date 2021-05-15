@@ -35,8 +35,9 @@ namespace FamilyOrganizer
             Context.ShoppingPlans.Load();
             Context.TodayPlans.Load();
 
-            //Seed.SeedTransactions(Context);
-            //Seed.SeedBalances(Context);
+            //Seed.SeedTransactions(Context); seed shopping list
+            //Seed.SeedBalances(Context); seed photos
+            Seed.SeedPhotos(Context);
            
 
             if (Context.AppUsers.Count() == 0)

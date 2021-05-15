@@ -235,7 +235,7 @@
                                             <Setter Property="FrameworkElement.MinHeight" TargetName="DropDownBorder" Value="95"/>
                                         </Trigger>
                                         <DataTrigger Binding="{Binding ElementName=TypeChoice, Path=SelectedIndex}" 
-                                Value="1">
+                                Value="0">
                                             <Setter Property="IsEnabled" Value="True"></Setter>
                                         </DataTrigger>
                                         <Trigger Property="UIElement.IsEnabled" Value="False">
@@ -331,9 +331,6 @@
                             </Setter.Value>
                         </Setter>
                     </Style>
-                    
-                    <!--TextBox for general page-->
-                
                     
                     <!--ScrollViewer for general page-->
                     <SolidColorBrush x:Key="HorizontalNormalBrush" Color="#FF686868" />

@@ -113,8 +113,8 @@
                           FontSize="20"
                           VerticalAlignment="Top"
                           Margin="10 40 0 0">
-                    <ComboBoxItem>Deposit</ComboBoxItem>
                     <ComboBoxItem>Expense</ComboBoxItem>
+                    <ComboBoxItem Name="DepositItem">Deposit</ComboBoxItem>
                     <ComboBoxItem Name="TransferItem">Transfer</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
@@ -137,6 +137,7 @@
                          FontSize="20"
                          BorderBrush="Black"
                          PreviewTextInput="TranSum_PreviewTextInput" 
+                         TextChanged="TranSum_TextChanged"
                          Height="35"
                          Width="366"
                          HorizontalAlignment="Left"

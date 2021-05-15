@@ -83,7 +83,16 @@ namespace FamilyOrganizer
 
         private void MessageInput_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = MessageInput.Text.Length >= 25;
+            //e.Handled = MessageInput.Text.Length >= 25;
+        }
+
+        private void MessageInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if ((sender as TextBox).Text.Length > 25)
+            {
+                (sender as TextBox).Text = (sender as TextBox).Text.Substring(0, 25);
+            }
+            (sender as TextBox).CaretIndex = 25;
         }
     }
 }

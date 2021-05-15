@@ -89,6 +89,7 @@
                   Height="34" 
                   BorderThickness="2"
                   Width="400"
+                  TextChanged="MessageInput_TextChanged"
                   VerticalAlignment="Bottom"
                   HorizontalAlignment="Right"
                   Margin="10 0 10 37.5"
@@ -115,7 +116,7 @@
                        FontFamily="helvetica"
                        FontWeight="Light"
                        FontSize="20"
-                       Height="30"
+                       Height="33"
                        HorizontalAlignment="Center"/>
                 <Image Margin="0"
                        Source="{Binding Photo.Source}"

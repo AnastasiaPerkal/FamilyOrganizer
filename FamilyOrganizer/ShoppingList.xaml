@@ -80,6 +80,7 @@
                   Grid.Row="2"
                   Grid.ColumnSpan="2"
                   x:Name="ItemsToBuyInput"
+                  TextChanged="ItemsToBuyInput_TextChanged"
                   FontFamily="helvetica"
                   Height="34" 
                   BorderThickness="2"

@@ -34,10 +34,10 @@ namespace FamilyOrganizer
         public void Refresh()
         {
             TasksList.ItemsSource = null;
-            TasksList.ItemsSource = _context.TodayPlans.Local.ToBindingList().Where(p => p.IsAdded == true);
+            TasksList.ItemsSource = _context.TodayPlans.Local.ToBindingList().Where(p => p.IsAdded == true && p.UserId == _currentUser.Id);
 
             TaskListRoutine.ItemsSource = null;
-            TaskListRoutine.ItemsSource = _context.TodayPlans.Local.ToBindingList().Where(p => p.IsRoutine == true);
+            TaskListRoutine.ItemsSource = _context.TodayPlans.Local.ToBindingList().Where(p => p.IsRoutine == true && p.UserId == _currentUser.Id);
         }
 
         public Diary(FamilyOrganizerContext familyOrganizerContext, AppUser currentUser)
@@ -46,8 +46,8 @@ namespace FamilyOrganizer
             _context = familyOrganizerContext;
             _currentUser = currentUser;
 
-            TaskListRoutine.ItemsSource = _context.TodayPlans.Local.ToBindingList().Where(p => p.IsRoutine == true);
-            TasksList.ItemsSource = _context.TodayPlans.Local.ToBindingList().Where(p => p.IsAdded == true);
+            TaskListRoutine.ItemsSource = _context.TodayPlans.Local.ToBindingList().Where(p => p.IsRoutine == true && p.UserId == _currentUser.Id);
+            TasksList.ItemsSource = _context.TodayPlans.Local.ToBindingList().Where(p => p.IsAdded == true && p.UserId == _currentUser.Id);
         }
 
         private void deleteItem_MouseLeave(object sender, MouseEventArgs e)
@@ -91,11 +91,9 @@ namespace FamilyOrganizer
         private void approveItem_Click(object sender, RoutedEventArgs e)
         {
             var todayPlan = (sender as Button).DataContext as TodayPlan;
-            _context.TodayPlans.Remove(todayPlan);
             todayPlan.IsAdded = true;
-            _context.TodayPlans.Add(todayPlan);
+            _context.Entry(todayPlan).State = EntityState.Modified;
             _context.SaveChanges();
-
             Refresh();
         }
 
@@ -108,7 +106,20 @@ namespace FamilyOrganizer
 
         private void deleteItem1_Click(object sender, RoutedEventArgs e)
         {
+            var todayPlan = (sender as Button).DataContext as TodayPlan;
+            
+            if(todayPlan.IsRoutine)
+            {
+                todayPlan.IsAdded = false;
+                _context.Entry(todayPlan).State = EntityState.Modified;
+            }
+            else
+            {
+                _context.TodayPlans.Remove(todayPlan);
+            }
+            _context.SaveChanges();
 
+            Refresh();
         }
 
         private void addTaskSuggestion_MouseLeave(object sender, MouseEventArgs e)
@@ -190,5 +201,15 @@ namespace FamilyOrganizer
             (sender as Button).Height += 10;
             (sender as Button).Margin = new Thickness(-5, -5, 0, 0);
         }
+
+        private void TasksInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if ((sender as TextBox).Text.Length > 19)
+            {
+                (sender as TextBox).Text = (sender as TextBox).Text.Substring(0, 19);
+            }
+            (sender as TextBox).CaretIndex = 19;
+        }
+
     }
 }

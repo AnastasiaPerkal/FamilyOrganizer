@@ -64,6 +64,7 @@
                          FontSize="20"
                          BorderBrush="Black"
                          PreviewTextInput="TranSum_PreviewTextInput" 
+                         TextChanged="TranSum_TextChanged"
                          Height="35"
                          Width="367"
                          HorizontalAlignment="Left"

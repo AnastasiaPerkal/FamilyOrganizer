@@ -47,7 +47,6 @@ namespace FamilyOrganizer
             {
                 var mb = new FamilyOrganizerMessageBox("The sum is required");
                 mb.Show();
-                //MessageBox.Show("The sum is required");
                 return;
             }
 
@@ -55,7 +54,6 @@ namespace FamilyOrganizer
             {
                 var mb = new FamilyOrganizerMessageBox("The sum is invalid");
                 mb.Show();
-                //MessageBox.Show("The sum is invalid");
                 return;
             }
             var sum = Convert.ToDouble(TranSum.Text);
@@ -128,6 +126,15 @@ namespace FamilyOrganizer
             AddBtn.Width -= 10;
             AddBtn.Height -= 10;
             AddBtn.Margin = new Thickness(0, 7, 0, 0);
+        }
+
+        private void TranSum_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if ((sender as TextBox).Text.Length > 13)
+            {
+                (sender as TextBox).Text = (sender as TextBox).Text.Substring(0, 13);
+            }
+            (sender as TextBox).CaretIndex = 13;
         }
     }
 }

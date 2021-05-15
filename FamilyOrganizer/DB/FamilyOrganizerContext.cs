@@ -18,7 +18,7 @@ namespace FamilyOrganizer.User
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
 
-        public FamilyOrganizerContext() : base("DefaultConnection")
+        public FamilyOrganizerContext() : base("Lab11")
         {
             
         }

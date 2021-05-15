@@ -37,7 +37,7 @@
                 Click="CloseBtn_Click"
                 MouseEnter="CloseBtn_MouseEnter"
                 MouseLeave="CloseBtn_MouseLeave"
-                Margin="10"
+                Margin="0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top">
             <Button.Background>

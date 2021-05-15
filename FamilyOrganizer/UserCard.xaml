@@ -100,16 +100,14 @@
                             Margin="70 60 0 0">
 
                     <Button x:Name="DeleteUser"
-                       
-                        Height="50"
-                        Width="50"
-                        BorderThickness="0"
-                        Style="{StaticResource ButtonStyle}"
-                        Click="DeleteUser_Click"
-                        MouseEnter="DeleteUser_MouseEnter"
-                        MouseLeave="DeleteUser_MouseLeave"
-                        Margin="0"
-                       >
+                            Height="50"
+                            Width="50"
+                            BorderThickness="0"
+                            Style="{StaticResource ButtonStyle}"
+                            Click="DeleteUser_Click"
+                            MouseEnter="DeleteUser_MouseEnter"
+                            MouseLeave="DeleteUser_MouseLeave"
+                            Margin="0" >
                         <Button.Background>
                             <ImageBrush ImageSource=".\Resources\deleteUser.png"/>
                         </Button.Background>

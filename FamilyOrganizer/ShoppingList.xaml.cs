@@ -179,5 +179,14 @@ namespace FamilyOrganizer
             (sender as Button).Height -= 10;
             (sender as Button).Margin = new Thickness(0, 0, 0, 0);
         }
+
+        private void ItemsToBuyInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if ((sender as TextBox).Text.Length > 19)
+            {
+                (sender as TextBox).Text = (sender as TextBox).Text.Substring(0, 19);
+            }
+            (sender as TextBox).CaretIndex = 19;
+        }
     }
 }

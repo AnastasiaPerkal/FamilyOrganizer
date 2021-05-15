@@ -190,6 +190,8 @@
                    BorderThickness="0"
                    Margin="10 0 0 20"
                    RowHeaderWidth="0"
-                   Loaded="dgSimple_Loaded"/>
+                   Loaded="dgSimple_Loaded"
+                   CanUserDeleteRows="False"
+                   CanUserAddRows="False"/>
     </Grid>
 </UserControl>
