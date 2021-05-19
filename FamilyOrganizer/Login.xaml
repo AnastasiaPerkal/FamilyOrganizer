@@ -55,6 +55,7 @@
                          FontFamily="helvetica"
                          FontWeight="Light"
                          Text="Username"
+                         TextChanged="UsernameLogin_TextChanged"
                          FontSize="20"
                          HorizontalAlignment="Center"
                          Background="Transparent"
@@ -79,6 +80,7 @@
                              FontFamily="helvetica"
                              FontWeight="Light"
                              Password="Username"
+                             PasswordChanged="PasswordLogin_PasswordChanged"
                              FontSize="20"
                              HorizontalAlignment="Center"
                              Background="Transparent"
@@ -98,7 +100,8 @@
                         Style="{StaticResource ButtonStyle}"
                         Click="Button_Click"
                         MouseEnter="Button_MouseEnter"
-                        MouseLeave="Button_MouseLeave">
+                        MouseLeave="Button_MouseLeave"
+                        IsDefault="True">
                     <Button.Background>
                         <ImageBrush ImageSource=".\Resources\loginOrRegister.png"/>
                     </Button.Background>

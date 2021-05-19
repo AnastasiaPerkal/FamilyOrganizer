@@ -72,8 +72,9 @@
     <Grid>
         <Grid x:Name="Back" Background="White">
 
+            
             <Grid x:Name="Back1">
-                
+            
             </Grid>
             <Border CornerRadius="10"></Border>
             <!--app close button-->
@@ -90,6 +91,8 @@
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Grid.ColumnSpan="3" MouseDown="Grid_MouseDown" Background="White"/>
 
                 <Button x:Name="CloseBtn"
                         Grid.Column="1"
@@ -132,7 +135,7 @@
                     <Grid Height="90">
                         <TextBlock Grid.Row="1"
                                    Grid.Column="0"
-                                   Margin="73 -20 0 0"
+                                   Margin="73 0 0 0"
                                    Text="M E N U"
                                    Foreground="White"
                                    FontSize="22"
@@ -143,9 +146,9 @@
                         </TextBlock>
                         <ToggleButton x:Name="ToggleBtn"
                                       Grid.Column="0"
-                                      VerticalAlignment="Center"
+                                      VerticalAlignment="Top"
                                       HorizontalAlignment="Left"
-                                      Margin="5 0 0 0"
+                                      Margin="5,17,0,0"
                                       Height="55"
                                       Width="55"
                                       BorderThickness="0"
@@ -206,7 +209,7 @@
                                        Stretch="Fill"
                                        Width="53" Height="55" />
                                 <TextBlock Text="General"
-                                           Margin="25 0 0 0"
+                                           Margin="10 0 0 0"
                                            Style="{StaticResource FontStyle}"/>
                             </StackPanel>
                         </ListViewItem>
@@ -222,8 +225,8 @@
                                        Stretch="Fill"
                                        Name="profileImage"
                                        Width="55" Height="55"/>
-                                <TextBlock Text="Pfofile"
-                                           Margin="25 0 0 0"
+                                <TextBlock Text="Profile"
+                                           Margin="10 0 0 0"
                                            Style="{StaticResource FontStyle}"/>
                             </StackPanel>
                         </ListViewItem>
@@ -240,7 +243,7 @@
                                        Name="familyImage"
                                        Margin="-4 0 0 0" Width="60" Height="50"/>
                                 <TextBlock Text="Family"
-                                           Margin="25 0 0 0"
+                                           Margin="10 0 0 0"
                                            Style="{StaticResource FontStyle}"/>
 
                             </StackPanel>
@@ -259,7 +262,7 @@
                                        Name="statisticsImage"
                                        Width="55" Height="55"/>
                                 <TextBlock Text="Statistics"
-                                           Margin="25 0 0 0"
+                                           Margin="10 0 0 0"
                                            Style="{StaticResource FontStyle}"/>
                             </StackPanel>
                         </ListViewItem>
@@ -275,7 +278,7 @@
                                        Name="expencesImage"
                                        Width="55" Height="55"/>
                                 <TextBlock Text="Expences"
-                                           Margin="25 0 0 0"
+                                           Margin="10 0 0 0"
                                            Style="{StaticResource FontStyle}"/>
                             </StackPanel>
                         </ListViewItem>
@@ -290,8 +293,8 @@
                                        Stretch="Fill"
                                        Name="listImage"
                                        Width="55" Height="53"/>
-                                <TextBlock Text="List"
-                                           Margin="25 0 0 0"
+                                <TextBlock Text="Shopping list"
+                                           Margin="10 0 0 0"
                                            Style="{StaticResource FontStyle}"/>
 
                             </StackPanel>
@@ -309,8 +312,8 @@
                                        Stretch="Fill"
                                        Name="diaryImage"
                                        Width="55" Height="55"/>
-                                <TextBlock Text="Diary"
-                                           Margin="25 0 0 0"
+                                <TextBlock Text="Tasks"
+                                           Margin="10 0 0 0"
                                            Style="{StaticResource FontStyle}"/>
                             </StackPanel>
                         </ListViewItem>

@@ -42,7 +42,7 @@ namespace FamilyOrganizer
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             var username = UsernameRegister.Text;
 
@@ -56,6 +56,13 @@ namespace FamilyOrganizer
             if (string.IsNullOrEmpty(PasswordRegister.Password))
             {
                 var mb = new FamilyOrganizerMessageBox("Password is required");
+                mb.Show();
+                return;
+            }
+
+            if (PasswordRegister.Password.Length < 6)
+            {
+                var mb = new FamilyOrganizerMessageBox("Minimum password length is 6");
                 mb.Show();
                 return;
             }
@@ -82,13 +89,19 @@ namespace FamilyOrganizer
             };
             _context.AppUsers.Add(user);
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             if (_toMainWindow)
             {
                 var mv = new MainWindow(_context, user);
                 mv.Show();
             }
+            else
+            {
+                var mb = new FamilyOrganizerMessageBox("Family member has been added. Refresh the page to see the changes");
+                mb.Show();
+            }
+
             Close();
         }
 
@@ -157,6 +170,23 @@ namespace FamilyOrganizer
             LB.Height -= 10;
             LB.Margin = new Thickness(25, 3, 0, 0);
             ParentLabel.Margin = new Thickness(0);
+        }
+
+        private void UsernameRegister_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if ((sender as TextBox).Text.Length > 30)
+            {
+                (sender as TextBox).Text = (sender as TextBox).Text.Substring(0, 30);
+            }
+            (sender as TextBox).CaretIndex = 30;
+        }
+
+        private void PasswordRegister_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if ((sender as PasswordBox).Password.Length > 30)
+            {
+                (sender as PasswordBox).Password = (sender as PasswordBox).Password.Substring(0, 30);
+            }
         }
     }
 }

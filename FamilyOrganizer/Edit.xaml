@@ -89,6 +89,7 @@
                          FontFamily="helvetica"
                          FontWeight="Light"
                          Text="Current name"
+                         TextChanged="TextBoxCurrentUsername_TextChanged"
                          FontSize="20"
                          HorizontalAlignment="Center"
                          Background="Transparent"
@@ -96,7 +97,7 @@
                          Width="235"
                          HorizontalContentAlignment="Left"
                          Height="25"
-                         Margin="0 0 0 0"/>
+                         Margin="0 0 0 0" RenderTransformOrigin="0.5,0.504"/>
             </StackPanel>
 
             <Border Width="500"
@@ -120,7 +121,8 @@
                 <PasswordBox x:Name="TextBoxPassword"
                      FontFamily="helvetica"
                      FontWeight="Light"
-                     Password="Password"
+                     Password="k*7m\Z!~"
+                     PasswordChanged="TextBoxPassword_PasswordChanged"
                      GotFocus="TextBoxPassword_GotFocus"
                      LostFocus="TextBoxPassword_LostFocus"
                      FontSize="20"

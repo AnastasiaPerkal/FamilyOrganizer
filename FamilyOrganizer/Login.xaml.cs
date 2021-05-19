@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -35,7 +36,7 @@ namespace FamilyOrganizer
             this.context = context;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(UsernameLogin.Text) || string.IsNullOrEmpty(PasswordLogin.Password))
             {
@@ -47,7 +48,7 @@ namespace FamilyOrganizer
             // после проверок
             var username = UsernameLogin.Text;
 
-            var user = context.AppUsers.FirstOrDefault(u => u.UserName == username);
+            var user = await context.AppUsers.FirstOrDefaultAsync(u => u.UserName == username);
             if (user == null)
             {
                 var mb = new FamilyOrganizerMessageBox("Check username and password");
@@ -105,6 +106,23 @@ namespace FamilyOrganizer
             LB.Height -= 10;
 
             LB.Margin = new Thickness(25, 3, 0, 0);
+        }
+
+        private void UsernameLogin_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if ((sender as TextBox).Text.Length > 30)
+            {
+                (sender as TextBox).Text = (sender as TextBox).Text.Substring(0, 30);
+            }
+            (sender as TextBox).CaretIndex = 30;
+        }
+
+        private void PasswordLogin_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if ((sender as PasswordBox).Password.Length > 30)
+            {
+                (sender as PasswordBox).Password = (sender as PasswordBox).Password.Substring(0, 30);
+            }
         }
     }
 }

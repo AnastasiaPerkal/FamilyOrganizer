@@ -83,15 +83,19 @@
             <TextBox  x:Name="TasksInput"
                       FontFamily="helvetica"
                       Height="34" 
+                      Foreground="Gray"
+                      Text="Today tasks"
                       BorderThickness="2"
                       Width="250"
+                      GotFocus="TasksInput_GotFocus"
+                      LostFocus="TasksInput_LostFocus"
                       VerticalAlignment="Center"
                       HorizontalAlignment="Left"
                       Margin="20,8,0,7.6"
                       Style="{StaticResource TextBoxStyleGeneral}"
                       VerticalContentAlignment="Center"
                       FontWeight="Light"
-                      FontSize="20">
+                      FontSize="20" TextChanged="TasksInput_TextChanged">
             </TextBox>
             <Button x:Name="addTask"
                     Height="50"
@@ -110,7 +114,12 @@
             <TextBox  x:Name="TasksSuggestionsInput"
                       FontFamily="helvetica"
                       Height="34" 
+                      Text="Routine tasks"
+                      Foreground="Gray"
+                      GotFocus="TasksSuggestionsInput_GotFocus"
+                      LostFocus="TasksSuggestionsInput_LostFocus"
                       BorderThickness="2"
+                      TextChanged="TasksSuggestionsInput_TextChanged"
                       Width="200"
                       VerticalAlignment="Center"
                       HorizontalAlignment="Left"
@@ -210,7 +219,7 @@
 
             <ItemsControl 
                 Name="TaskListRoutine" 
-                x:FieldModifier="public" Height="403">
+                x:FieldModifier="public" Height="450">
 
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -266,7 +275,7 @@
             </ItemsControl>
 
         </ScrollViewer>
-        <Label Content="Task suggestions"
+        <!--<Label Content="Task suggestions"
                Grid.Row="3"
                Grid.Column="2"
                FontFamily="helvetica"
@@ -277,6 +286,6 @@
                VerticalAlignment="Top"
                HorizontalAlignment="Center"
                HorizontalContentAlignment="Center"
-               Margin="-10 0 0 0"/>
+               Margin="-10 0 0 0"/>-->
     </Grid>
 </UserControl>

@@ -38,14 +38,14 @@ namespace FamilyOrganizer
         {
             CloseBtn.Width += 10;
             CloseBtn.Height += 10;
-            CloseBtn.Margin = new Thickness(5, 5, 10, 10);
+            CloseBtn.Margin = new Thickness(0, -5, -5, 0);
         }
 
         private void CloseBtn_MouseLeave(object sender, MouseEventArgs e)
         {
             CloseBtn.Width -= 10;
             CloseBtn.Height -= 10;
-            CloseBtn.Margin = new Thickness(10, 10, 10, 10);
+            CloseBtn.Margin = new Thickness(0);
         }
     }
 }

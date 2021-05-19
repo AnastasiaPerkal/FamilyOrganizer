@@ -28,6 +28,8 @@ namespace FamilyOrganizer
 
         public void Refresh()
         {
+            _context.ShoppingPlans.Load();
+
             ShoppingListUnapproved.ItemsSource = null;
             ShoppingListUnapproved.ItemsSource = _context.ShoppingPlans.Local.ToBindingList().Where(p => !p.Accepted);
 
@@ -47,13 +49,15 @@ namespace FamilyOrganizer
             _context = context;
             _currentUser = currentUser;
 
+            _context.ShoppingPlans.Load();
+
             ShoppingListUnapproved.ItemsSource = _context.ShoppingPlans.Local.ToBindingList().Where(p => !p.Accepted);
             ShoppingListApproved.ItemsSource = _context.ShoppingPlans.Local.ToBindingList().Where(p => p.Accepted);
         }
 
-        private void addItem_Click(object sender, RoutedEventArgs e)
+        private async void addItem_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(ItemsToBuyInput.Text))
+            if (string.IsNullOrWhiteSpace(ItemsToBuyInput.Text) || ItemsToBuyInput.Text == "What are you going to buy?")
             {
                 return;
             }
@@ -72,11 +76,13 @@ namespace FamilyOrganizer
             }
 
             _context.ShoppingPlans.Add(shoppingPlan);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             Refresh();
 
-            ItemsToBuyInput.Text = "";
+            ItemsToBuyInput.Text = "What are you going to buy?";
+            ItemsToBuyInput.Foreground = Brushes.Gray;
+            addItem.Focus();
         }
 
         private void addItem_MouseEnter(object sender, MouseEventArgs e)
@@ -93,12 +99,12 @@ namespace FamilyOrganizer
             addItem.Margin = new Thickness(135, 0, 0, 0);
         }
 
-        private void approveItem_Click(object sender, RoutedEventArgs e)
+        private async void approveItem_Click(object sender, RoutedEventArgs e)
         {
             var shoppingplan = (sender as Button).DataContext as ShoppingPlan;
             shoppingplan.Accepted = true;
             _context.Entry(shoppingplan).State = EntityState.Modified;
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             Refresh();
         }
@@ -117,12 +123,12 @@ namespace FamilyOrganizer
             (sender as Button).Margin = new Thickness(-3, 0, 0, 0);
         }
 
-        private void deleteItem_Click(object sender, RoutedEventArgs e)
+        private async void deleteItem_Click(object sender, RoutedEventArgs e)
         {
             var shoppingplan = (sender as Button).DataContext as ShoppingPlan;
 
             _context.ShoppingPlans.Remove(shoppingplan);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             Refresh();
 
@@ -178,6 +184,30 @@ namespace FamilyOrganizer
             (sender as Button).Width -= 10;
             (sender as Button).Height -= 10;
             (sender as Button).Margin = new Thickness(0, 0, 0, 0);
+        }
+
+        private void ItemsToBuyInput_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ItemsToBuyInput.Text = "";
+            ItemsToBuyInput.Foreground = Brushes.Black;
+        }
+
+        private void ItemsToBuyInput_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (ItemsToBuyInput.Text == "")
+            {
+                ItemsToBuyInput.Text = "What are you going to buy?";
+                ItemsToBuyInput.Foreground = Brushes.Gray;
+            }
+        }
+
+        private void ItemsToBuyInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if ((sender as TextBox).Text.Length > 14)
+            {
+                (sender as TextBox).Text = (sender as TextBox).Text.Substring(0, 14);
+            }
+            (sender as TextBox).CaretIndex = 14;
         }
     }
 }

@@ -96,7 +96,6 @@ namespace FamilyOrganizer
             {
                 var mb = new FamilyOrganizerMessageBox("Username cannot be empty");
                 mb.Show();
-                //MessageBox.Show("Username cannot be empty");
                 return;
             }
 
@@ -104,7 +103,6 @@ namespace FamilyOrganizer
             {
                 var mb = new FamilyOrganizerMessageBox("Invalid password");
                 mb.Show();
-               // MessageBox.Show("Invalid password");
                 return;
             }
 
@@ -112,21 +110,24 @@ namespace FamilyOrganizer
             {
                 var mb = new FamilyOrganizerMessageBox("Username is taken");
                 mb.Show();
-               // MessageBox.Show("Username is taken");
                 return;
             }
 
             var hashedPassword = PasswordHash.CreateHash(password);
 
-            if (password != "Password")
+            if (password != "k*7m\\Z!~")
             {
                 _currentUser.Password = hashedPassword;  
             }
 
             _currentUser.UserName = username;
-            _currentUser.Photo = _context.Photos.FirstOrDefault(p => p.Id == PhotoId);
+            _currentUser.Photo = await _context.Photos.FirstOrDefaultAsync(p => p.Id == PhotoId);
             _context.Entry(_currentUser).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            if (await _context.SaveChangesAsync() > 0)
+            {
+                var mb = new FamilyOrganizerMessageBox("Your changes have been applied");
+                mb.Show();
+            }
         }
 
         private void TextBoxPassword_PreviewMouseDown(object sender, MouseButtonEventArgs e)
@@ -141,7 +142,7 @@ namespace FamilyOrganizer
         private void TextBoxPassword_LostFocus(object sender, RoutedEventArgs e)
         {
             if (TextBoxPassword.Password == "")
-                TextBoxPassword.Password = "Password";
+                TextBoxPassword.Password = "k*7m\\Z!~";
         }
 
         private void right_MouseEnter(object sender, MouseEventArgs e)
@@ -174,7 +175,6 @@ namespace FamilyOrganizer
 
         private void saveLogin_MouseEnter(object sender, MouseEventArgs e)
         {
-            //  Margin="0 50 10 10"
             saveLogin.Width += 10;
             saveLogin.Height += 10;
             saveLogin.Margin = new Thickness(0, 50, 5, 5);
@@ -186,6 +186,23 @@ namespace FamilyOrganizer
             saveLogin.Width -= 10;
             saveLogin.Height -= 10;
             saveLogin.Margin = new Thickness(0, 50, 10, 10);
+        }
+
+        private void TextBoxCurrentUsername_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if ((sender as TextBox).Text.Length > 30)
+            {
+                (sender as TextBox).Text = (sender as TextBox).Text.Substring(0, 30);
+            }
+            (sender as TextBox).CaretIndex = 30;
+        }
+
+        private void TextBoxPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if ((sender as PasswordBox).Password.Length > 30)
+            {
+                (sender as PasswordBox).Password = (sender as PasswordBox).Password.Substring(0, 30);
+            }
         }
     }
 }

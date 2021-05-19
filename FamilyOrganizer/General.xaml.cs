@@ -47,9 +47,9 @@ namespace FamilyOrganizer
             InitializeComponent();
         }
 
-        private void sendMessage_Click(object sender, RoutedEventArgs e)
+        private async void sendMessage_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(MessageInput.Text))
+            if (string.IsNullOrWhiteSpace(MessageInput.Text) || MessageInput.Text == "Start typing...")
             {
                 return;
             }
@@ -61,10 +61,14 @@ namespace FamilyOrganizer
             };
 
             _context.Comments.Add(comment);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             MessageInput.Text = "";
             Comments.ScrollToEnd();
+            MessageInput.Text = "Start typing...";
+            MessageInput.Foreground = Brushes.Gray;
+            sendMessage.Focus();
+            
         }
 
         private void sendMessage_MouseEnter(object sender, MouseEventArgs e)
@@ -84,6 +88,33 @@ namespace FamilyOrganizer
         private void MessageInput_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = MessageInput.Text.Length >= 25;
+        }
+
+        private void MessageInput_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (MessageInput.Text == "Start typing...")
+            { 
+                MessageInput.Text = "";
+                MessageInput.Foreground = Brushes.Black;
+            }
+        }
+
+        private void MessageInput_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (MessageInput.Text == "")
+            {
+                MessageInput.Text = "Start typing...";
+                MessageInput.Foreground = Brushes.Gray;
+            }
+        }
+
+        private void MessageInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if ((sender as TextBox).Text.Length > 19)
+            {
+                (sender as TextBox).Text = (sender as TextBox).Text.Substring(0, 19);
+            }
+            (sender as TextBox).CaretIndex = 19;
         }
     }
 }

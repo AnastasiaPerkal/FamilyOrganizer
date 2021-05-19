@@ -1,6 +1,7 @@
 ﻿using FamilyOrganizer.User;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ namespace FamilyOrganizer
         private readonly FamilyOrganizerContext _context;
         private readonly AppUser _currentUser;
 
-        public void SelectTransactions()
+        public async void SelectTransactions()
         {
             var month = (int)(MonthComboBox.SelectedItem ?? 0);
             var year = (int)(YearComboBox.SelectedItem ?? 0);
@@ -34,14 +35,14 @@ namespace FamilyOrganizer
 
             if (_currentUser.Role == "Parent")
             {
-                dgSimple.ItemsSource = itemsSource.Select(t => new { t.Date, t.Sum, t.Type, t.ToUser.UserName })
-                    .ToList();
+                dgSimple.ItemsSource = await itemsSource.Select(t => new { t.Date, t.Sum, t.Type, t.ToUser.UserName })
+                    .ToListAsync();
             }
             else
             {
                 itemsSource = itemsSource.Where(t => t.ToUserId == _currentUser.Id);
 
-                dgSimple.ItemsSource = itemsSource.Select(t => new { t.Date, t.Sum, t.Type }).ToList();
+                dgSimple.ItemsSource = await itemsSource.Select(t => new { t.Date, t.Sum, t.Type }).ToListAsync();
             }
         }
 
@@ -93,13 +94,13 @@ namespace FamilyOrganizer
             }
         }
 
-        private void UpdateTransaction_Click(object sender, RoutedEventArgs e)
+        private async void UpdateTransaction_Click(object sender, RoutedEventArgs e)
         {
-            YearComboBox.ItemsSource = _context.Transactions.Select(b => b.Date.Year).Distinct()
-                .ToList();
+            YearComboBox.ItemsSource = await _context.Transactions.Select(b => b.Date.Year).Distinct()
+                .ToListAsync();
 
-            MonthComboBox.ItemsSource = _context.Transactions.Select(b => b.Date.Month).Distinct()
-                .ToList();
+            MonthComboBox.ItemsSource = await _context.Transactions.Select(b => b.Date.Month).Distinct()
+                .ToListAsync();
 
             SelectTransactions();
         }

@@ -26,18 +26,19 @@
             </Setter>
         </Style>
     </Window.Resources>
-    
+
     <Grid>
         <Border BorderBrush="Black" BorderThickness="1"/>
         <Button x:Name="CloseBtn"
                 Height="50"
                 Width="50"
+                IsDefault="True"
                 BorderThickness="0"
                 Style="{StaticResource ButtonStyle}"
                 Click="CloseBtn_Click"
                 MouseEnter="CloseBtn_MouseEnter"
                 MouseLeave="CloseBtn_MouseLeave"
-                Margin="10"
+                Margin="0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top">
             <Button.Background>

@@ -64,12 +64,12 @@ namespace FamilyOrganizer
             (sender as Button).Margin = new Thickness(-13, -5, 0, 0);
         }
 
-        private void deleteItem_Click(object sender, RoutedEventArgs e)
+        private async void deleteItem_Click(object sender, RoutedEventArgs e)
         {
             var todayPlan = (sender as Button).DataContext as TodayPlan;
 
             _context.TodayPlans.Remove(todayPlan);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             Refresh();
         }
@@ -88,14 +88,12 @@ namespace FamilyOrganizer
             (sender as Button).Margin = new Thickness(-3, 0, 0, 0);
         }
 
-        private void approveItem_Click(object sender, RoutedEventArgs e)
+        private async void approveItem_Click(object sender, RoutedEventArgs e)
         {
             var todayPlan = (sender as Button).DataContext as TodayPlan;
-            _context.TodayPlans.Remove(todayPlan);
             todayPlan.IsAdded = true;
-            _context.TodayPlans.Add(todayPlan);
-            _context.SaveChanges();
-
+            _context.Entry(todayPlan).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
             Refresh();
         }
 
@@ -106,9 +104,22 @@ namespace FamilyOrganizer
             (sender as Button).Margin = new Thickness(0, 0, 0, 0);
         }
 
-        private void deleteItem1_Click(object sender, RoutedEventArgs e)
+        private async void deleteItem1_Click(object sender, RoutedEventArgs e)
         {
+            var todayPlan = (sender as Button).DataContext as TodayPlan;
 
+            if (todayPlan.IsRoutine)
+            {
+                todayPlan.IsAdded = false;
+                _context.Entry(todayPlan).State = EntityState.Modified;
+            }
+            else
+            {
+                _context.TodayPlans.Remove(todayPlan);
+            }
+            await _context.SaveChangesAsync();
+
+            Refresh();
         }
 
         private void addTaskSuggestion_MouseLeave(object sender, MouseEventArgs e)
@@ -125,10 +136,10 @@ namespace FamilyOrganizer
             addTaskSuggestion.Margin = new Thickness(-5, -5, 0, 0);
         }
 
-        private void addTaskSuggestion_Click(object sender, RoutedEventArgs e)
+        private async void addTaskSuggestion_Click(object sender, RoutedEventArgs e)
         {
 
-            if (string.IsNullOrWhiteSpace(TasksSuggestionsInput.Text))
+            if (string.IsNullOrWhiteSpace(TasksSuggestionsInput.Text) || TasksSuggestionsInput.Text == "Routine tasks")
             {
                 return;
             }
@@ -140,11 +151,12 @@ namespace FamilyOrganizer
                 UserId = _currentUser.Id
             };
             _context.TodayPlans.Add(todayPlan);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             Refresh();
 
-            TasksSuggestionsInput.Text = "";
+            TasksSuggestionsInput.Text = "Routine tasks";
+            TasksSuggestionsInput.Foreground = Brushes.Gray;
         }
 
         private void addTask_MouseLeave(object sender, MouseEventArgs e)
@@ -163,9 +175,9 @@ namespace FamilyOrganizer
             TasksSuggestionsInput.Margin = new Thickness(5, 0, 0, -0.5);
         }
 
-        private void addTask_Click(object sender, RoutedEventArgs e)
+        private async void addTask_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(TasksInput.Text))
+            if (string.IsNullOrWhiteSpace(TasksInput.Text) || TasksInput.Text == "Today tasks")
             {
                 return;
             }
@@ -177,11 +189,12 @@ namespace FamilyOrganizer
                 UserId = _currentUser.Id
             };
             _context.TodayPlans.Add(todayPlan);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             Refresh();
 
-            TasksInput.Text = "";
+            TasksInput.Text = "Today tasks";
+            TasksInput.Foreground = Brushes.Gray;
         }
 
         private void deleteItem1_MouseEnter(object sender, MouseEventArgs e)
@@ -189,6 +202,60 @@ namespace FamilyOrganizer
             (sender as Button).Width += 10;
             (sender as Button).Height += 10;
             (sender as Button).Margin = new Thickness(-5, -5, 0, 0);
+        }
+
+        private void TasksSuggestionsInput_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (TasksSuggestionsInput.Text == "Routine tasks")
+            {
+                TasksSuggestionsInput.Text = "";
+                TasksSuggestionsInput.Foreground = Brushes.Black;
+            }
+        }
+
+        private void TasksSuggestionsInput_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TasksSuggestionsInput.Text == "")
+            {
+                TasksSuggestionsInput.Text = "Routine tasks";
+                TasksSuggestionsInput.Foreground = Brushes.Gray;
+            }
+        }
+
+        private void TasksInput_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (TasksInput.Text == "Today tasks")
+            {
+                TasksInput.Text = "";
+                TasksInput.Foreground = Brushes.Black;
+            }
+        }
+
+        private void TasksInput_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TasksInput.Text == "")
+            {
+                TasksInput.Text = "Today tasks";
+                TasksInput.Foreground = Brushes.Gray;
+            }
+        }
+
+        private void TasksSuggestionsInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if ((sender as TextBox).Text.Length > 14)
+            {
+                (sender as TextBox).Text = (sender as TextBox).Text.Substring(0, 14);
+            }
+            (sender as TextBox).CaretIndex = 14;
+        }
+
+        private void TasksInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if ((sender as TextBox).Text.Length > 14)
+            {
+                (sender as TextBox).Text = (sender as TextBox).Text.Substring(0, 14);
+            }
+            (sender as TextBox).CaretIndex = 14;
         }
     }
 }

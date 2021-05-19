@@ -21,7 +21,7 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
+
             <Border Margin="20 5 5 5" 
                     Height="35" Width="630"  
                     HorizontalAlignment="Left"  
@@ -41,7 +41,7 @@
                    Width="250"
                    HorizontalContentAlignment="Center"
                    Height="35" />
-           
+
             <StackPanel Orientation="Horizontal" 
                         Grid.Row="2" 
                         Grid.Column="0" 
@@ -64,6 +64,7 @@
                          FontSize="20"
                          BorderBrush="Black"
                          PreviewTextInput="TranSum_PreviewTextInput" 
+                         TextChanged="TranSum_TextChanged"
                          Height="35"
                          Width="367"
                          HorizontalAlignment="Left"

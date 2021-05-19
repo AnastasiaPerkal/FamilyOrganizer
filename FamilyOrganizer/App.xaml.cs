@@ -24,20 +24,21 @@ namespace FamilyOrganizer
             
         }
 
-        protected override void OnStartup(StartupEventArgs e)
+        protected override async void OnStartup(StartupEventArgs e)
         {
             Context = new FamilyOrganizerContext();
-            Context.Photos.Load();
-            Context.AppUsers.Load();
-            Context.Transactions.Load();
-            Context.Balances.Load();
-            Context.Comments.Load();
-            Context.ShoppingPlans.Load();
-            Context.TodayPlans.Load();
+            await Context.Photos.LoadAsync();
+            await Context.AppUsers.LoadAsync();
+            await Context.Transactions.LoadAsync();
+            await Context.Balances.LoadAsync();
+            await Context.Comments.LoadAsync();
+            await Context.ShoppingPlans.LoadAsync();
+            await Context.TodayPlans.LoadAsync();
 
             //Seed.SeedTransactions(Context);
             //Seed.SeedBalances(Context);
-           
+            //Seed.SeedPhotos(Context);
+
 
             if (Context.AppUsers.Count() == 0)
             {

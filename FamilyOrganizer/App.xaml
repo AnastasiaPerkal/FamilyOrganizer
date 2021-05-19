@@ -52,7 +52,7 @@
                             </Setter.Value>
                         </Setter>
                     </Style>
-                    
+
                     <!--For ComboBox-->
                     <SolidColorBrush x:Key="ComboBoxNormalBorderBrush" Color="black" />
                     <SolidColorBrush x:Key="ComboBoxNormalBackgroundBrush" Color="#fff" />
@@ -83,7 +83,7 @@
                                   Grid.Column="1" 
                                   Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z"
                                   HorizontalAlignment="Center" Fill="#444"
-                                  VerticalAlignment="Center" />   
+                                  VerticalAlignment="Center" />
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="UIElement.IsMouseOver" Value="True">
@@ -105,7 +105,7 @@
                         <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
                         <Setter Property="TextElement.Foreground" Value="Black"/>
                         <Setter Property="FrameworkElement.FocusVisualStyle" Value="{x:Null}"/>
-                        
+
                         <Setter Property="Control.Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="ComboBox">
@@ -114,7 +114,7 @@
                                                       Grid.Column="2"
                                                       ClickMode="Press" Focusable="False"
                                                       IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-                                                      Template="{StaticResource ComboBoxToggleButtonTemplate}"/>      
+                                                      Template="{StaticResource ComboBoxToggleButtonTemplate}"/>
 
                                         <ContentPresenter Name="ContentSite" 
                                                           Margin="5, 3, 23, 3" 
@@ -136,7 +136,7 @@
                                                 </ControlTemplate>
                                             </TextBox.Template>
                                         </TextBox>
-                                        
+
                                         <!-- Popup showing items -->
                                         <Popup Name="Popup" 
                                                Placement="Bottom"
@@ -235,7 +235,7 @@
                                             <Setter Property="FrameworkElement.MinHeight" TargetName="DropDownBorder" Value="95"/>
                                         </Trigger>
                                         <DataTrigger Binding="{Binding ElementName=TypeChoice, Path=SelectedIndex}" 
-                                Value="1">
+                                Value="0">
                                             <Setter Property="IsEnabled" Value="True"></Setter>
                                         </DataTrigger>
                                         <Trigger Property="UIElement.IsEnabled" Value="False">
@@ -331,10 +331,7 @@
                             </Setter.Value>
                         </Setter>
                     </Style>
-                    
-                    <!--TextBox for general page-->
-                
-                    
+
                     <!--ScrollViewer for general page-->
                     <SolidColorBrush x:Key="HorizontalNormalBrush" Color="#FF686868" />
                     <SolidColorBrush x:Key="HorizontalNormalBorderBrush" Color="#888" />
@@ -427,12 +424,12 @@
                             </Setter.Value>
                         </Setter>
                     </Style>
-                    
-                    
+
+
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
-            
+
         </ResourceDictionary>
     </Application.Resources>
-    
+
 </Application>

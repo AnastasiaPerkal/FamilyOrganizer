@@ -66,7 +66,8 @@
             <ScrollViewer Style ="{StaticResource FavsScrollViewer}" 
                           VerticalScrollBarVisibility="Visible" 
                           Name="Comments" Margin="0 0 0 0">
-                <ItemsControl  Name="commentsList" x:FieldModifier="public" Margin="0 0 20 20">
+                <ItemsControl  Name="commentsList" 
+                               x:FieldModifier="public" Margin="0 0 20 20">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel/>
@@ -89,6 +90,9 @@
                   Height="34" 
                   BorderThickness="2"
                   Width="400"
+                  Text="Start typing..."
+                  TextChanged="MessageInput_TextChanged"
+                  Foreground="Gray"
                   VerticalAlignment="Bottom"
                   HorizontalAlignment="Right"
                   Margin="10 0 10 37.5"
@@ -96,7 +100,9 @@
                   VerticalContentAlignment="Center"
                   FontWeight="Light"
                   FontSize="20"
-                  PreviewTextInput="MessageInput_PreviewTextInput">
+                  PreviewTextInput="MessageInput_PreviewTextInput"
+                  GotFocus="MessageInput_GotFocus"
+                  LostFocus="MessageInput_LostFocus">
         </TextBox>
         
         <Border Grid.Column="1"
@@ -144,6 +150,7 @@
         </Border>
         <Button x:Name="sendMessage"
                     Grid.Column="2"
+                    IsDefault="True"
                     Grid.Row="3"
                     Height="50"
                     Width="50"

@@ -23,8 +23,8 @@ namespace FamilyOrganizer
     /// </summary>
     public partial class AddTransaction : Window
     {
-        private static readonly Regex _numeric =  new Regex(@"^[0-9\.]+$");
-        private static readonly Regex _intAndFloat =  new Regex(@"^\d+(?:\.\d+)?$");
+        private static readonly Regex _numeric = new Regex(@"^[0-9\.]+$");
+        private static readonly Regex _intAndFloat = new Regex(@"^\d+(?:\.\d+)?$");
         private readonly FamilyOrganizerContext _context;
         private readonly AppUser _currentUser;
 
@@ -40,10 +40,14 @@ namespace FamilyOrganizer
             {
                 TransferItem.IsEnabled = false;
             }
+            if (_currentUser.Role == "Child")
+            {
+                DepositItem.IsEnabled = false;
+            }
         }
         public AddTransaction()
         {
-            InitializeComponent();  
+            InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -99,7 +103,7 @@ namespace FamilyOrganizer
                 default:
                     return;
             }
-     
+
             var transaction = new Transaction
             {
                 Type = type,
@@ -115,7 +119,7 @@ namespace FamilyOrganizer
                 toUser.Balance += sum;
                 _context.Entry(toUser).State = EntityState.Modified;
                 _context.Transactions.Add(new Transaction
-                {	
+                {
                     Type = transaction.Type,
                     Date = transaction.Date,
                     Sum = -transaction.Sum,
@@ -125,8 +129,12 @@ namespace FamilyOrganizer
             else
             {
                 var currentBalanceEntry = _context.Balances.OrderByDescending(b => b.Date).FirstOrDefault();
+                if (currentBalanceEntry == null)
+                    currentBalanceEntry = new Balance { Date = DateTime.Now };
+
                 var currentBalance = _context.AppUsers.Sum(u => u.Balance);
-                if (currentBalanceEntry.Date.Day == transaction.Date.Day)
+
+                if (currentBalanceEntry.Date.Day == transaction.Date.Day && _context.Balances.Count() > 0)
                 {
                     _context.Balances.Remove(currentBalanceEntry);
                 }
@@ -140,7 +148,7 @@ namespace FamilyOrganizer
 
             _context.SaveChanges();
             TranSum.Text = "";
-            
+
         }
 
         private void TranSum_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -180,6 +188,15 @@ namespace FamilyOrganizer
             AddBtn.Width -= 10;
             AddBtn.Height -= 10;
             AddBtn.Margin = new Thickness(0, 65, 0, 0);
+        }
+
+        private void TranSum_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if ((sender as TextBox).Text.Length > 13)
+            {
+                (sender as TextBox).Text = (sender as TextBox).Text.Substring(0, 13);
+            }
+            (sender as TextBox).CaretIndex = 13;
         }
     }
 }

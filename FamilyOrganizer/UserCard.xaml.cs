@@ -63,7 +63,7 @@ namespace FamilyOrganizer
             AddMoney.Margin = new Thickness(0, 5, 0, 0);
         }
 
-        private void DeleteUser_Click(object sender, RoutedEventArgs e)
+        private async void DeleteUser_Click(object sender, RoutedEventArgs e)
         {
             var currentUser = DataContext as AppUser;
 
@@ -78,13 +78,18 @@ namespace FamilyOrganizer
                 _context = (a as Family)._context;
             }
 
-            
-            _context.AppUsers.Remove(currentUser);
-            var currentBalance = _context.AppUsers.Where(u => u.UserName != currentUser.UserName).Sum(u => u.Balance);
+            if (!await _context.AppUsers.AnyAsync(u => u.Id == currentUser.Id))
+                return;
 
-            var currentBalanceEntry = _context.Balances.OrderByDescending(b => b.Date).FirstOrDefault();
+            _context.AppUsers.Remove(currentUser);
+            var currentBalance = await _context.AppUsers.Where(u => u.UserName != currentUser.UserName).SumAsync(u => u.Balance);
+
+            var currentBalanceEntry = await _context.Balances.OrderByDescending(b => b.Date).FirstOrDefaultAsync();
+
+            if (currentBalanceEntry == null)
+                currentBalanceEntry = new Balance { CurrentBalance = 0, Date = DateTime.Now };
             
-            if (currentBalanceEntry.Date.Day == DateTime.Now.Day)
+            if (currentBalanceEntry.Date.Day == DateTime.Now.Day && _context.Balances.Count() > 0)
             {
                 _context.Balances.Remove(currentBalanceEntry);
             }
@@ -95,10 +100,10 @@ namespace FamilyOrganizer
                 CurrentBalance = currentBalance
             });
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        private void AddMoney_Click(object sender, RoutedEventArgs e)
+        private async void AddMoney_Click(object sender, RoutedEventArgs e)
         {
             var currentUser = DataContext as AppUser;
             if (_context == null)
@@ -111,6 +116,9 @@ namespace FamilyOrganizer
 
                 _context = (a as Family)._context;
             }
+
+            if (!await _context.AppUsers.AnyAsync(u => u.Id == currentUser.Id))
+                return;
 
             AddMoneyAdmin ama = new AddMoneyAdmin(_context, currentUser);
             ama.Show();
