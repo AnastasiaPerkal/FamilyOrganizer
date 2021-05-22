@@ -34,10 +34,10 @@ namespace FamilyOrganizer
         public void Refresh()
         {
             TasksList.ItemsSource = null;
-            TasksList.ItemsSource = _context.TodayPlans.Local.ToBindingList().Where(p => p.IsAdded == true);
+            TasksList.ItemsSource = _context.TodayPlans.Local.ToBindingList().Where(p => p.IsAdded == true && _currentUser.Id == p.UserId);
 
             TaskListRoutine.ItemsSource = null;
-            TaskListRoutine.ItemsSource = _context.TodayPlans.Local.ToBindingList().Where(p => p.IsRoutine == true);
+            TaskListRoutine.ItemsSource = _context.TodayPlans.Local.ToBindingList().Where(p => p.IsRoutine == true && _currentUser.Id == p.UserId);
         }
 
         public Diary(FamilyOrganizerContext familyOrganizerContext, AppUser currentUser)
@@ -46,8 +46,8 @@ namespace FamilyOrganizer
             _context = familyOrganizerContext;
             _currentUser = currentUser;
 
-            TaskListRoutine.ItemsSource = _context.TodayPlans.Local.ToBindingList().Where(p => p.IsRoutine == true);
-            TasksList.ItemsSource = _context.TodayPlans.Local.ToBindingList().Where(p => p.IsAdded == true);
+            TaskListRoutine.ItemsSource = _context.TodayPlans.Local.ToBindingList().Where(p => p.IsRoutine == true && _currentUser.Id == p.UserId);
+            TasksList.ItemsSource = _context.TodayPlans.Local.ToBindingList().Where(p => p.IsAdded == true && _currentUser.Id == p.UserId);
         }
 
         private void deleteItem_MouseLeave(object sender, MouseEventArgs e)

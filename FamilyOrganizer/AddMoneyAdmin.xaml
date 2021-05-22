@@ -88,6 +88,7 @@
                 </Button.Background>
             </Button>
             <Button x:Name="AddBtn"
+                    IsDefault="True"
                         Grid.Column="1"
                         Grid.Row="2"
                         Height="50"

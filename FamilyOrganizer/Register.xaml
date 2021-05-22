@@ -5,22 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FamilyOrganizer"
         mc:Ignorable="d"
-                Title="Login" Height="500" Width="400"
+        Title="Register" Height="250" Width="400"
         AllowsTransparency="True"
-        
-        Background="#c7cedf"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         ResizeMode="NoResize">
 
     <Grid>
 
-        <Grid.RowDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/Register.jpg" />
+        </Grid.Background>
+        <!--<Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
-        </Grid.RowDefinitions>
+        </Grid.RowDefinitions>-->
 
-        <Button x:Name="Close"
+        
+            <Button x:Name="Close"
                 Grid.Row="0"
                 Height="50"
                 Width="50"
@@ -31,25 +33,25 @@
                 MouseEnter="Close_MouseEnter"
                 MouseLeave="Close_MouseLeave"
                 Click="Close_Click">
-            <Button.Background>
-                <ImageBrush ImageSource=".\Resources\quit.png"/>
-            </Button.Background>
-        </Button>
+                <Button.Background>
+                    <ImageBrush ImageSource=".\Resources\quit.png"/>
+                </Button.Background>
+            </Button>
 
-        <StackPanel VerticalAlignment="Center">
-            <Image Source=".\Resources\MainIcon4.png" Width="100" Height="100"/>
-            <TextBlock Text="Modern Design"
+            <!--<StackPanel VerticalAlignment="Center">
+            <Image Source=".\Resources\MainIcon.png" Width="100" Height="100"/>
+            <TextBlock Text="Register"
                        FontWeight="Light"
                        FontFamily="helvetica"
-                       FontSize="22"
+                       FontSize="30"
                        HorizontalAlignment="Center"/>
-        </StackPanel>
+        </StackPanel>-->
 
-        <StackPanel Grid.Row="1" >
-            <StackPanel Orientation="Horizontal">
-                <Image Source=".\Resources\username.png"
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 30 0 0">
+                    <Image Source=".\Resources\username.png"
                        Width="50" Height="50" Margin="25 25 0 0"/>
-                <TextBox x:Name="UsernameRegister"
+                    <TextBox x:Name="UsernameRegister"
                          FontFamily="helvetica"
                          FontWeight="Light"
                          Text="Username"
@@ -62,16 +64,16 @@
                          Height="25"
                          BorderThickness="0"
                          Margin="0 30 0 0"/>
-            </StackPanel>
-            <Border Width="250"
+                </StackPanel>
+                <Border Width="250"
                     Height="1"
                     Background="Black"
                     Margin="0 -17 0 0"
                     HorizontalAlignment="Center"/>
-            <StackPanel Orientation="Horizontal" >
-                <Image Source=".\Resources\password.png" 
+                <StackPanel Orientation="Horizontal" >
+                    <Image Source=".\Resources\password.png" 
                        Width="50" Height="50"  Margin="25 25 0 0"/>
-                <PasswordBox x:Name="PasswordRegister"
+                    <PasswordBox x:Name="PasswordRegister"
                              FontFamily="helvetica"
                              FontWeight="Light"
                              Password="Username"
@@ -84,7 +86,7 @@
                              HorizontalContentAlignment="Left"
                              Height="25"
                              Margin="0 30 0 0"/>
-                <Button x:Name="LB"
+                    <Button x:Name="LB"
                         Grid.Row="1"
                         Grid.Column="0"
                         Height="50"
@@ -97,20 +99,20 @@
                         Click="Button_Click" 
                         MouseEnter="LB_MouseEnter"
                         MouseLeave="LB_MouseLeave">
-                    <Button.Background>
-                        <ImageBrush ImageSource=".\Resources\loginOrRegister.png"/>
-                    </Button.Background>
-                </Button>
+                        <Button.Background>
+                            <ImageBrush ImageSource=".\Resources\loginOrRegister.png"/>
+                        </Button.Background>
+                    </Button>
 
-            </StackPanel>
-            <Border Width="250"
+                </StackPanel>
+                <Border Width="250"
                     Height="1"
                     Background="Black"
                     Margin="0 -17 0 0"
                     HorizontalAlignment="Center"/>
 
-            <StackPanel Name="ParentWithCheckBox" Orientation="Horizontal" HorizontalAlignment="Left">
-                <Label x:Name="ParentLabel"
+                <StackPanel Name="ParentWithCheckBox" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Label x:Name="ParentLabel"
                        HorizontalContentAlignment="Right"
                        Margin="0 0 0 0"
                        Width="190"
@@ -120,7 +122,7 @@
                        FontWeight="Light"
                        FontSize="20"
                        Height="60">Parent</Label>
-                <Button x:Name="IsParent"
+                    <Button x:Name="IsParent"
                         Height="50"
                         Width="50"
                         BorderThickness="0"
@@ -129,13 +131,14 @@
                         MouseLeave="IsParent_MouseLeave"
                         HorizontalAlignment="Left"
                         Click="IsParent_Click">
-                    <Button.Background>
-                        <ImageBrush ImageSource=".\Resources\unchecked.png"/>
-                    </Button.Background>
-                </Button>
-               
+                        <Button.Background>
+                            <ImageBrush ImageSource=".\Resources\unchecked.png"/>
+                        </Button.Background>
+                    </Button>
+
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
+
     </Grid>
 </Window>
 

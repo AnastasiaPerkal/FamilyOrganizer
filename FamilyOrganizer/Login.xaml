@@ -6,19 +6,17 @@
         xmlns:local="clr-namespace:FamilyOrganizer"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Login" Height="500" Width="400"
+        Title="Login" Height="250" Width="400"
         AllowsTransparency="True"
-        Background="#c7cedf"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         ResizeMode="NoResize">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
 
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/Register.jpg" />
+        </Grid.Background>
         <Button x:Name="Close"
                 Grid.Row="0"
                 Grid.Column="0"
@@ -36,16 +34,7 @@
             </Button.Background>
         </Button>
 
-        <StackPanel VerticalAlignment="Center" Grid.Row="0">
-            <Image Source=".\Resources\MainIcon4.png" Width="100" Height="100"/>
-            <TextBlock Text="Modern Design"
-                       FontWeight="Light"
-                       FontFamily="helvetica"
-                       FontSize="22"
-                       HorizontalAlignment="Center"/>
-        </StackPanel>
-        
-        <StackPanel Grid.Row="1" >
+        <StackPanel Grid.Row="1" Margin="0 30 0 0">
             <StackPanel Orientation="Horizontal">
                 <Image Source=".\Resources\username.png"
                        Width="50" 

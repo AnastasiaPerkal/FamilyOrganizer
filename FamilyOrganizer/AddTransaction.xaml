@@ -163,6 +163,7 @@
 
             <Button x:Name="AddBtn"
                     Grid.Column="1"
+                    IsDefault="True"
                     Grid.Row="2"
                     Height="50"
                     Width="50"

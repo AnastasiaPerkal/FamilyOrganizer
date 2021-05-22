@@ -6,7 +6,9 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -21,11 +23,21 @@ namespace FamilyOrganizer
 
         public App()
         {
-            
+
         }
 
         protected override async void OnStartup(StartupEventArgs e)
         {
+            Process thisProc = Process.GetCurrentProcess();
+            if (Process.GetProcessesByName(thisProc.ProcessName).Length > 1)
+            {
+                MessageBox.Show("Application is running");
+                Current.Shutdown();
+                return;
+            }
+
+            var ss = new SplashScreen();
+            ss.Show();
             Context = new FamilyOrganizerContext();
             await Context.Photos.LoadAsync();
             await Context.AppUsers.LoadAsync();
@@ -34,6 +46,7 @@ namespace FamilyOrganizer
             await Context.Comments.LoadAsync();
             await Context.ShoppingPlans.LoadAsync();
             await Context.TodayPlans.LoadAsync();
+
 
             //Seed.SeedTransactions(Context);
             //Seed.SeedBalances(Context);
@@ -50,6 +63,7 @@ namespace FamilyOrganizer
                 var l = new Login(Context);
                 l.Show();
             }
+            ss.Close();
             
         }
     }

@@ -96,3 +96,5 @@ C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrgan
 C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\obj\Debug\FamilyOrganizerMessageBox.g.cs
 C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\obj\Debug\FamilyOrganizerMessageBox.baml
 C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\obj\Debug\App.baml
+C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\obj\Debug\SplashScreen.g.cs
+C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\obj\Debug\SplashScreen.baml

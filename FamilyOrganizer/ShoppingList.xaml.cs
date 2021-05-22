@@ -196,7 +196,7 @@ namespace FamilyOrganizer
         {
             if (ItemsToBuyInput.Text == "")
             {
-                ItemsToBuyInput.Text = "What are you going to buy?";
+                ItemsToBuyInput.Text = "What to buy?";
                 ItemsToBuyInput.Foreground = Brushes.Gray;
             }
         }

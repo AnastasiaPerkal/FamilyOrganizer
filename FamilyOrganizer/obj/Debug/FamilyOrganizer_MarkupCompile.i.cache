@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Alexey\Desktop\ЛР\ООП курсовой\FamilyOrganizer\FamilyOrganizer\App.xaml
-15-1140623575
+161030217558
 
-30-1763286174
+31-1162652450
 51432971625
-AddMoneyAdmin.xaml;AddTransaction.xaml;Diary.xaml;Edit.xaml;Family.xaml;FamilyOrganizerMessageBox.xaml;General.xaml;Login.xaml;MainWindow.xaml;Message.xaml;Money.xaml;Register.xaml;Statistics.xaml;ShoppingList.xaml;UserCard.xaml;
+AddMoneyAdmin.xaml;AddTransaction.xaml;Diary.xaml;Edit.xaml;Family.xaml;FamilyOrganizerMessageBox.xaml;General.xaml;Login.xaml;MainWindow.xaml;Message.xaml;Money.xaml;Register.xaml;SplashScreen.xaml;Statistics.xaml;ShoppingList.xaml;UserCard.xaml;
 
 True
 
