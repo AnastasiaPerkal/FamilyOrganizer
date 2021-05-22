@@ -28,7 +28,26 @@ namespace FamilyOrganizer
 
         public void Refresh()
         {
+            bool isChecked = false;
+
             _context.ShoppingPlans.Load();
+
+            while (!isChecked)
+            {
+                isChecked = true;
+                foreach (var sp in _context.ShoppingPlans.Local)
+                {
+                    if (!_context.ShoppingPlans.Any(p => p.Id == sp.Id))
+                    {
+                        _context.ShoppingPlans.Local.ToBindingList().Remove(sp);
+                        
+                        isChecked = false;
+                        break;
+                    }
+                }
+            }
+            
+           
 
             ShoppingListUnapproved.ItemsSource = null;
             ShoppingListUnapproved.ItemsSource = _context.ShoppingPlans.Local.ToBindingList().Where(p => !p.Accepted);
@@ -49,16 +68,15 @@ namespace FamilyOrganizer
             _context = context;
             _currentUser = currentUser;
 
-            _context.ShoppingPlans.Load();
-
             ShoppingListUnapproved.ItemsSource = _context.ShoppingPlans.Local.ToBindingList().Where(p => !p.Accepted);
             ShoppingListApproved.ItemsSource = _context.ShoppingPlans.Local.ToBindingList().Where(p => p.Accepted);
         }
 
-        private async void addItem_Click(object sender, RoutedEventArgs e)
+        private void addItem_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(ItemsToBuyInput.Text) || ItemsToBuyInput.Text == "What are you going to buy?")
+            if (string.IsNullOrWhiteSpace(ItemsToBuyInput.Text) || ItemsToBuyInput.Text == "What to buy?")
             {
+              //  Refresh();
                 return;
             }
             var shoppingPlan = new ShoppingPlan
@@ -75,14 +93,24 @@ namespace FamilyOrganizer
                 shoppingPlan.Accepted = false;
             }
 
-            _context.ShoppingPlans.Add(shoppingPlan);
-            await _context.SaveChangesAsync();
-
-            Refresh();
-
-            ItemsToBuyInput.Text = "What are you going to buy?";
+            if (! _context.ShoppingPlans.Any(p => p.Item == shoppingPlan.Item))
+            {
+                _context.ShoppingPlans.Add(shoppingPlan);
+           
+                try
+                {
+                    _context.SaveChanges();
+                }
+                catch
+                {
+                    Refresh();
+                }
+            }
+           
+            ItemsToBuyInput.Text = "What to buy?";
             ItemsToBuyInput.Foreground = Brushes.Gray;
             addItem.Focus();
+            Refresh();
         }
 
         private void addItem_MouseEnter(object sender, MouseEventArgs e)
@@ -123,15 +151,29 @@ namespace FamilyOrganizer
             (sender as Button).Margin = new Thickness(-3, 0, 0, 0);
         }
 
-        private async void deleteItem_Click(object sender, RoutedEventArgs e)
+        private void deleteItem_Click(object sender, RoutedEventArgs e)
         {
             var shoppingplan = (sender as Button).DataContext as ShoppingPlan;
 
-            _context.ShoppingPlans.Remove(shoppingplan);
-            await _context.SaveChangesAsync();
-
-            Refresh();
-
+            if (_context.ShoppingPlans.Any(p => p.Id == shoppingplan.Id))
+            {
+                _context.ShoppingPlans.Remove(shoppingplan);
+                try
+                {
+                    _context.SaveChanges();
+                }
+                catch
+                {
+                    return;
+                }
+                Refresh();
+            }
+            else if (shoppingplan != null)
+            {
+                _context.ShoppingPlans.Local.ToBindingList().Remove(shoppingplan);
+                Refresh();
+            }
+            
         }
 
         private void deleteItem_MouseEnter(object sender, MouseEventArgs e)
@@ -208,6 +250,16 @@ namespace FamilyOrganizer
                 (sender as TextBox).Text = (sender as TextBox).Text.Substring(0, 14);
             }
             (sender as TextBox).CaretIndex = 14;
+        }
+
+        private void Label_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Refresh();
+        }
+
+        private void UserControl_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Refresh();
         }
     }
 }

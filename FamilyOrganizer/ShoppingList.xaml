@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FamilyOrganizer"
              mc:Ignorable="d" 
-             d:DesignHeight="555" d:DesignWidth="700">
+             d:DesignHeight="555" d:DesignWidth="700"
+             MouseEnter="UserControl_MouseEnter">
     <UserControl.Resources>
         <Style TargetType="{x:Type TextBox}" x:Key="TextBoxStyleGeneral">
             <Setter Property="Template">
@@ -192,7 +193,8 @@
                Background="Transparent"
                BorderThickness="0"
                HorizontalContentAlignment="Center"
-               Height="35"/>
+               Height="35"
+               MouseDown="Label_MouseDown"/>
 
         <ScrollViewer Style ="{StaticResource FavsScrollViewer}" 
                       VerticalScrollBarVisibility="Visible" 
