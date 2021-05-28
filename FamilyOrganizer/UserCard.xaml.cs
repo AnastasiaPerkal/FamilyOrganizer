@@ -101,6 +101,8 @@ namespace FamilyOrganizer
             });
 
             await _context.SaveChangesAsync();
+            var mb = new FamilyOrganizerMessageBox("Refresh the page to see the changes");
+            mb.Show();
         }
 
         private async void AddMoney_Click(object sender, RoutedEventArgs e)

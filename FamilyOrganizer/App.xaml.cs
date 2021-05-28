@@ -20,6 +20,9 @@ namespace FamilyOrganizer
     public partial class App : Application
     {
         public FamilyOrganizerContext Context { get; set; }
+        const string AppId = "FAMILY ORGANIZER";
+        static Mutex mutex = new Mutex(false, AppId);
+        static bool mutexAccessed = false;
 
         public App()
         {
@@ -28,11 +31,22 @@ namespace FamilyOrganizer
 
         protected override async void OnStartup(StartupEventArgs e)
         {
-            Process thisProc = Process.GetCurrentProcess();
-            if (Process.GetProcessesByName(thisProc.ProcessName).Length > 1)
+            try
             {
-                MessageBox.Show("Application is running");
-                Current.Shutdown();
+                if (mutex.WaitOne(0))
+                    mutexAccessed = true;
+            }
+            catch (AbandonedMutexException)
+            {
+                mutexAccessed = true;
+            }
+
+            if (mutexAccessed)
+                base.OnStartup(e);
+            else
+            {
+                MessageBox.Show("FamilyOrganizer is running");
+                Shutdown();
                 return;
             }
 
@@ -64,7 +78,18 @@ namespace FamilyOrganizer
                 l.Show();
             }
             ss.Close();
-            
+
         }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            if (mutexAccessed)
+                mutex?.ReleaseMutex();
+
+            mutex?.Dispose();
+            mutex = null;
+            base.OnExit(e);
+        }
+    
     }
 }

@@ -56,7 +56,6 @@ namespace FamilyOrganizer
             {
                 var mb = new FamilyOrganizerMessageBox("The sum is required");
                 mb.Show();
-                //MessageBox.Show("The sum is required");
                 return;
             }
 
@@ -64,7 +63,6 @@ namespace FamilyOrganizer
             {
                 var mb = new FamilyOrganizerMessageBox("The sum is invalid");
                 mb.Show();
-                //MessageBox.Show("The sum is invalid");
                 return;
             }
 
@@ -75,9 +73,8 @@ namespace FamilyOrganizer
 
             if (_currentUser.Balance < Math.Abs(sum) && (TypeChoice.SelectedItem as ComboBoxItem).Content?.ToString() != "Deposit")
             {
-                var mb = new FamilyOrganizerMessageBox("You don't have enough money((");
+                var mb = new FamilyOrganizerMessageBox("You don't have enough money");
                 mb.Show();
-                //MessageBox.Show("You don't have enough money((");
                 return;
             }
 
@@ -158,6 +155,8 @@ namespace FamilyOrganizer
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
+            var mb = new FamilyOrganizerMessageBox("Refresh the page to see the changes");
+            mb.Show();
             Close();
         }
 

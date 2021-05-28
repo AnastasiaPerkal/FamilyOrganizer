@@ -110,11 +110,11 @@ namespace FamilyOrganizer
 
         private void UsernameLogin_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if ((sender as TextBox).Text.Length > 30)
+            if ((sender as TextBox).Text.Length > 10)
             {
-                (sender as TextBox).Text = (sender as TextBox).Text.Substring(0, 30);
+                (sender as TextBox).Text = (sender as TextBox).Text.Substring(0, 10);
             }
-            (sender as TextBox).CaretIndex = 30;
+            (sender as TextBox).CaretIndex = 10;
         }
 
         private void PasswordLogin_PasswordChanged(object sender, RoutedEventArgs e)

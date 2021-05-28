@@ -26,16 +26,11 @@ namespace FamilyOrganizer
                 Convert.ToBase64String(hash);
         }
 
-        public static bool ValidatePassword(string password, string correctHash)
+        private static byte[] PBKDF2(string password, byte[] salt, int iterations, int outputBytes)
         {
-            char[] delimiter = { ':' };
-            string[] split = correctHash.Split(delimiter);
-            int iterations = Int32.Parse(split[ITERATION_INDEX]);
-            byte[] salt = Convert.FromBase64String(split[SALT_INDEX]);
-            byte[] hash = Convert.FromBase64String(split[PBKDF2_INDEX]);
-
-            byte[] testHash = PBKDF2(password, salt, iterations, hash.Length);
-            return SlowEquals(hash, testHash);
+            Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(password, salt);
+            pbkdf2.IterationCount = iterations;
+            return pbkdf2.GetBytes(outputBytes);
         }
 
         private static bool SlowEquals(byte[] a, byte[] b)
@@ -46,11 +41,16 @@ namespace FamilyOrganizer
             return diff == 0;
         }
 
-        private static byte[] PBKDF2(string password, byte[] salt, int iterations, int outputBytes)
+        public static bool ValidatePassword(string password, string correctHash)
         {
-            Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(password, salt);
-            pbkdf2.IterationCount = iterations;
-            return pbkdf2.GetBytes(outputBytes);
+            char[] delimiter = { ':' };
+            string[] split = correctHash.Split(delimiter);
+            int iterations = Int32.Parse(split[ITERATION_INDEX]);
+            byte[] salt = Convert.FromBase64String(split[SALT_INDEX]);
+            byte[] hash = Convert.FromBase64String(split[PBKDF2_INDEX]);
+
+            byte[] testHash = PBKDF2(password, salt, iterations, hash.Length);
+            return SlowEquals(hash, testHash);
         }
         
     }

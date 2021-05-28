@@ -48,13 +48,18 @@
         </StackPanel>-->
 
             <StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="0 30 0 0">
+            <Label Content="Registration"
+                   FontFamily="helvetica"
+                   FontWeight="Light"
+                   FontSize="25"
+                   HorizontalAlignment="Center"
+                   Margin="0 10 0 0"/>
+            <StackPanel Orientation="Horizontal" Margin="0 -10 0 0">
                     <Image Source=".\Resources\username.png"
                        Width="50" Height="50" Margin="25 25 0 0"/>
                     <TextBox x:Name="UsernameRegister"
                          FontFamily="helvetica"
                          FontWeight="Light"
-                         Text="Username"
                          TextChanged="UsernameRegister_TextChanged"
                          FontSize="20"
                          HorizontalAlignment="Center"
@@ -76,7 +81,6 @@
                     <PasswordBox x:Name="PasswordRegister"
                              FontFamily="helvetica"
                              FontWeight="Light"
-                             Password="Username"
                              PasswordChanged="PasswordRegister_PasswordChanged"
                              FontSize="20"
                              HorizontalAlignment="Center"

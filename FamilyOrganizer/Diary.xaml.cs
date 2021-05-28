@@ -251,11 +251,11 @@ namespace FamilyOrganizer
 
         private void TasksInput_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if ((sender as TextBox).Text.Length > 14)
+            if ((sender as TextBox).Text.Length > 20)
             {
-                (sender as TextBox).Text = (sender as TextBox).Text.Substring(0, 14);
+                (sender as TextBox).Text = (sender as TextBox).Text.Substring(0, 20);
             }
-            (sender as TextBox).CaretIndex = 14;
+            (sender as TextBox).CaretIndex = 20;
         }
     }
 }

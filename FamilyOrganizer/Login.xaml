@@ -33,7 +33,12 @@
                 <ImageBrush ImageSource=".\Resources\quit.png"/>
             </Button.Background>
         </Button>
-
+        <Label Content="Welcome back"
+                   FontFamily="helvetica"
+                   FontWeight="Light"
+                   FontSize="25"
+                   HorizontalAlignment="Center"
+                   Margin="0 10 0 0"/>
         <StackPanel Grid.Row="1" Margin="0 30 0 0">
             <StackPanel Orientation="Horizontal">
                 <Image Source=".\Resources\username.png"
@@ -43,7 +48,6 @@
                 <TextBox x:Name="UsernameLogin"
                          FontFamily="helvetica"
                          FontWeight="Light"
-                         Text="Username"
                          TextChanged="UsernameLogin_TextChanged"
                          FontSize="20"
                          HorizontalAlignment="Center"
@@ -68,7 +72,6 @@
                 <PasswordBox x:Name="PasswordLogin"
                              FontFamily="helvetica"
                              FontWeight="Light"
-                             Password="Username"
                              PasswordChanged="PasswordLogin_PasswordChanged"
                              FontSize="20"
                              HorizontalAlignment="Center"

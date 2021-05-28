@@ -98,7 +98,7 @@ namespace FamilyOrganizer
             }
             else
             {
-                var mb = new FamilyOrganizerMessageBox("Family member has been added. Refresh the page to see the changes");
+                var mb = new FamilyOrganizerMessageBox("Refresh the page to see the changes");
                 mb.Show();
             }
 
@@ -174,11 +174,11 @@ namespace FamilyOrganizer
 
         private void UsernameRegister_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if ((sender as TextBox).Text.Length > 30)
+            if ((sender as TextBox).Text.Length > 10)
             {
-                (sender as TextBox).Text = (sender as TextBox).Text.Substring(0, 30);
+                (sender as TextBox).Text = (sender as TextBox).Text.Substring(0, 10);
             }
-            (sender as TextBox).CaretIndex = 30;
+            (sender as TextBox).CaretIndex = 10;
         }
 
         private void PasswordRegister_PasswordChanged(object sender, RoutedEventArgs e)

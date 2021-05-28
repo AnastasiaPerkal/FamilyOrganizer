@@ -100,6 +100,8 @@ namespace FamilyOrganizer
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
+            var mb = new FamilyOrganizerMessageBox("Refresh the page to see the changes");
+            mb.Show();
             Close();
         }
 
