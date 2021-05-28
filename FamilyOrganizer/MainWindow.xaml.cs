@@ -243,7 +243,12 @@ namespace FamilyOrganizer
         {
             Login l = new Login(_context);
             l.Show();
-
+            foreach (Window w in App.Current.Windows)
+            {
+                if (!(w is Login))
+                w.Close();
+            }
+                
             Close();
         }
 
